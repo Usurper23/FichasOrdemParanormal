@@ -14,10 +14,10 @@ while ($r = mysqli_fetch_array($fichanpcs)){
                 <h4>Atributos</h4>
                 <div class="row m-2 justify-content-center">
                     <?=$r["forca"]?'<div class="col-auto"><span class="input-group-text bg-black text-white">FOR: '.   ($r["forca"]>0?"+".$r["forca"]:$r["forca"]) .'</span></div>':""?>
-                    <?=$r["agilidade"]?'<div class="col-auto"><span class="input-group-text bg-black text-white">FOR: '.   ($r["agilidade"]>0?"+".$r["agilidade"]:$r["agilidade"]) .'</span></div>':""?>
-                    <?=$r["inteligencia"]?'<div class="col-auto"><span class="input-group-text bg-black text-white">FOR: '.   ($r["inteligencia"]>0?"+".$r["inteligencia"]:$r["inteligencia"]) .'</span></div>':""?>
-                    <?=$r["presenca"]?'<div class="col-auto"><span class="input-group-text bg-black text-white">FOR: '.   ($r["presenca"]>0?"+".$r["presenca"]:$r["presenca"]) .'</span></div>':""?>
-                    <?=$r["vigor"]?'<div class="col-auto"><span class="input-group-text bg-black text-white">FOR: '.   ($r["vigor"]>0?"+".$r["vigor"]:$r["vigor"]) .'</span></div>':""?>
+                    <?=$r["agilidade"]?'<div class="col-auto"><span class="input-group-text bg-black text-white">AGI: '.   ($r["agilidade"]>0?"+".$r["agilidade"]:$r["agilidade"]) .'</span></div>':""?>
+                    <?=$r["inteligencia"]?'<div class="col-auto"><span class="input-group-text bg-black text-white">INT: '.   ($r["inteligencia"]>0?"+".$r["inteligencia"]:$r["inteligencia"]) .'</span></div>':""?>
+                    <?=$r["presenca"]?'<div class="col-auto"><span class="input-group-text bg-black text-white">PRE: '.   ($r["presenca"]>0?"+".$r["presenca"]:$r["presenca"]) .'</span></div>':""?>
+                    <?=$r["vigor"]?'<div class="col-auto"><span class="input-group-text bg-black text-white">VIG: '.   ($r["vigor"]>0?"+".$r["vigor"]:$r["vigor"]) .'</span></div>':""?>
                 </div>
             </div>
             <div class="card-body border-0">
@@ -131,7 +131,7 @@ while ($r = mysqli_fetch_array($fichanpcs)){
 
 <div class="modal" id="addnpc" tabindex="-1" aria-hidden="true">
     <div class="modal-xl modal-dialog modal-dialog-centered">
-        <form class="modal-content bg-black border-light" id="formadd" method="post" novalidate autocomplete="off">
+        <form class="modal-content bg-black border-light" id="formaddnpc" method="post" autocomplete="off">
             <div class="card-header">
                 <ul class="nav nav-pills mb-3 row justify-content-center" id="pills-tab" role="tablist">
                     <li class="nav-item col-auto" role="presentation">
@@ -154,7 +154,7 @@ while ($r = mysqli_fetch_array($fichanpcs)){
                         <h2 class="my-2">Principal</h2>
                         <div class="m-2">
                             <label class="fs-4" for="nome">Nome</label>
-                            <input id="nome" class="form-control bg-black text-light" name="nome" type="text" required/>
+                            <input id="nome" class="form-control bg-black text-light" name="nome" type="text" maxlength="30" required/>
                             <div class="invalid-feedback">
                                 Precisa pelomenos do nome
                             </div>

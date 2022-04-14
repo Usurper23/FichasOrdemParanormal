@@ -84,11 +84,12 @@ function VerificarMestre($mid): bool
 {
     $id = $_SESSION["UserID"];
     $con = con();
-    $q = $con->query("Select * FROM `missoes` WHERE `mestre` = '".$id."' and `missoes`.`id` = '".$mid."'");
+    $q = $con->query("Select * FROM `missoes` WHERE `mestre` = '".$id."' and `id` = '".$mid."';");
     if ($q->num_rows > 0){
         return true;
+    } else {
+        return false;
     }
-    return false;
 }
 function VerificarConvite($missao): bool
 {
