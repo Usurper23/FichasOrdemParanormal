@@ -2,7 +2,7 @@
     <div class="card h-100 bg-black border-light">
         <div class="card-body p-0 font1">
             <?php if ($edit){?>
-            <div class="clearfix">
+            <div class="">
                 <div class="p-1 float-start text-info">
                     <i class="fa-regular fa-circle-info"></i>
                     <span> clique para rolar dados</span>

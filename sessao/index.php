@@ -167,8 +167,8 @@ require_once "./../includes/top.php";
                                                 if($dl["id_ficha"]>0){
                                                     ?>
                                                 <div class="position-absolute sticky-top">
-                                                    <button type="button" class="btn btn-sm text-primary" data-bs-toggle="modal" data-bs-target="#configplayer" onclick="configplayer(<?=$cd["id"]?>)"><i class="fa-solid fa-trash">Deletar</i></button>
-                                                    <button type="button" class="btn btn-sm" title="Ficha está atualmente <?=$cd["public"]?"Visivel":"Invisivel"?>"><i class="fa-regular fa-eye<?=$dl["public"]?" text-success":"-slash text-danger"?>"></i></button>
+                                                    <button type="button" class="btn btn-sm text-primary" data-bs-toggle="modal" data-bs-target="#configplayer" onclick="configplayer(<?=$cd["id"]?>)"><i class="fa-solid fa-gear"></i></button>
+                                                    <button type="button" class="btn btn-sm" title="Ficha está atualmente <?=$cd["public"]?"Visivel":"Invisivel"?>"><i class="fa-solid fa-eye<?=$dl["public"]?" text-success":"-slash text-danger"?>"></i></button>
                                                 </div>
                                                     <?php
                                                 }

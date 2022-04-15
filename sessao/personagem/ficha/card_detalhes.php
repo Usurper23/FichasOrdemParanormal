@@ -39,7 +39,7 @@
                 <input id="local" class="form-control bg-black text-decoration-underline text-light border-0" disabled value="<?=$local?>"/>
                 <?php
                 if(!empty($historia)){?>
-                    <label class="fs-4" for="historia">Hístoria</label>
+                    <label class="fs-4" for="historia">História</label>
                     <textarea id="historia" class="form-control bg-black text-light border-0" disabled><?=$historia;?></textarea>
                 <?php }
                 ?>

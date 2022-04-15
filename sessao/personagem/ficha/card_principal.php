@@ -18,7 +18,7 @@
             <?php } ?>
             <div class="row m-0">
                 <div class="col text-center">
-                    <img alt="Foto perfil" src="<?=$urlphoto;?>" width="150" height="150" class="<?php if(intval($rqs["foto"]) >0 && intval($rqs["foto"]) <3)echo "bg-secondary";?> rounded-circle mx-3 border border-1 border-white" />
+                    <img data-bs-toggle="modal" data-bs-target="#trocarficha" alt="Foto perfil" src="<?=$urlphoto;?>" width="150" height="150" class="<?php if(intval($rqs["foto"]) >0 && intval($rqs["foto"]) <3)echo "bg-secondary";?> rounded-circle mx-3 border border-1 border-white" />
                 </div>
                 <div class="col d-flex align-self-center flex-column">
                     <div class="m-2">

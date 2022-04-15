@@ -23,13 +23,13 @@
                 foreach ($s[2] as $r):
             ?>
                 <div class="m-3 clearfix">
-                    <label for="<?=$r["nome"];?>" class="fs-4"><?=$r["nome"];?></label>
+                    <label for="h<?=$r["id"];?>" class="fs-4"><?=$r["nome"];?></label>
                     <?php
                     if ($edit){?>
                     <button class="btn btn-sm fa fa-trash text-danger float-end" title="Apagar Habilidade '<?=$r["nome"];?>'" onclick="deletehab(<?=$r["id"];?>)"></button>
                     <?php }
                     ?>
-                    <textarea id="<?=$r["nome"];?>" class="form-control bg-black text-light border-0 font7" disabled><?=$r["descricao"];?></textarea>
+                    <textarea id="h<?=$r["id"];?>" class="form-control bg-black text-light border-0 font7" disabled><?=$r["descricao"];?></textarea>
                 </div>
             <?php
                 endforeach;

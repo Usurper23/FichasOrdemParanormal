@@ -75,3 +75,48 @@
         </div>
     </div>
 </div>
+
+<!---TROCAR DE PERFIL MODAL--->
+<div class="modal fade" id="trocarficha" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content bg-black border-light">
+            <div class="modal-body justify-content-center text-center">
+                <h1>Trocar Rápido</h1>
+
+                <?php
+                $k = $con->query("SELECT * FROM `ligacoes` WHERE `id_usuario` = '".$_SESSION["UserID"]."' AND `id_ficha` IS NOT NULL;");
+                if ($k->num_rows){
+                    echo "<h5>Com missão</h5>";
+                foreach ($k as $r):
+                    $ks=$con->query("SELECT * FROM `fichas_personagem` WHERE `id` = '".$r["id_ficha"]."'");
+                    $rs = mysqli_fetch_array($ks);
+                ?>
+                    <div class="d-grid gap-2 m-2">
+                        <a class="btn btn-primary" href="./?id=<?=$r["id_ficha"]?>"><?=$rs["nome"]?></a>
+                    </div>
+                <?php
+                endforeach;
+                }
+
+                ?>
+                <?php
+                $k = $con->query("SELECT * FROM `fichas_personagem` WHERE `usuario` = '".$_SESSION["UserID"]."';");
+                if ($k->num_rows){
+                    echo "<h5>Todas as Fichas</h5>";
+                foreach ($k as $r):
+                ?>
+                    <div class="d-grid gap-2 m-2">
+                        <a class="btn btn-primary" href="./?id=<?=$r["id"]?>"><?=$r["nome"]?></a>
+                    </div>
+                <?php
+                endforeach;
+                }
+
+                ?>
+                <div class="clearfix">
+                    <button type="button" class="btn btn-danger float-start" data-bs-dismiss="modal">Fechar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

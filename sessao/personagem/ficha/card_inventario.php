@@ -3,7 +3,7 @@
         <div class="card bg-black text-white border-light">
             <div class="card-body p-0">
                 <div class="card-title">
-                    <div class="clearfix">
+                    <div class="position-absolute end-0">
                         <div class="float-end">
                             <button class="btn btn-sm text-info fa-regular fa-eye" id="vera" title="Ver informações inventario"></button>
                             <?php if ($edit){?>
@@ -124,5 +124,4 @@
             </div>
         </div>
     </div>
-</div>
 </div>

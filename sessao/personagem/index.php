@@ -396,7 +396,7 @@ if (!isset($_GET["popout"])) {
                 include_once "./ficha/card_inventario.php";
         }
         ?>
-
+        </div>
 
 
 
