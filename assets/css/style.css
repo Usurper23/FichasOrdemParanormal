@@ -35,25 +35,40 @@ input[type=number] {
     url('../../../assets/css/daisywhl-webfont.woff') format('woff');
 
 }
-.font1{
-    font-family: 'Concert One', cursive;}
-.font2{
-    font-family: 'EB Garamond', serif;}
-.flow{
-    font-family: 'Flow Circular', cursive;}
-.font4{
-    font-family: 'Lemon', cursive;}
-.font5{
-    font-family: 'Permanent Marker', cursive;}
-.font6{
-    font-family: 'Special Elite', cursive;}
-.font7{
+
+.font1 {
+    font-family: 'Concert One', cursive;
+}
+
+.font2 {
+    font-family: 'EB Garamond', serif;
+}
+
+.flow {
+    font-family: 'Flow Circular', cursive;
+}
+
+.font4 {
+    font-family: 'Lemon', cursive;
+}
+
+.font5 {
+    font-family: 'Permanent Marker', cursive;
+}
+
+.font6 {
+    font-family: 'Special Elite', cursive;
+}
+
+.font7 {
     font-family: 'IM Fell English SC', serif;
 }
+
 .font8 {
     font-family: 'daisywheelregular', cursive;
 }
-.font9{
+
+.font9 {
     font-family: 'Yuji Boku', serif;
 }
 
@@ -65,34 +80,41 @@ input[type=number] {
     width: 300px;
     height: 355px;
     color: white;
-}.containera img {
-     width: 300px;
-     height: 355px;
- }
+}
 
-.atributos{
+.containera img {
+    width: 300px;
+    height: 355px;
+}
+
+.atributos {
     font-size: 30px;
     position: absolute;
     text-align: center;
     height: 22%;
     width: 26.03%;
 }
+
 .for {
     margin-top: 38.75%;
     margin-left: 5.75%;
 }
+
 .agi {
     margin-top: 15.75%;
     margin-left: 37%;
 }
+
 .int {
     margin-top: 38.75%;
     margin-left: 69%;
 }
+
 .pre {
     margin-top: 76.5%;
     margin-left: 15.5%;
 }
+
 .vig {
     margin-top: 76.5%;
     margin-left: 57.5%;

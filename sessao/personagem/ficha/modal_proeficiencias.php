@@ -7,7 +7,7 @@
                 <div class="text-center"><h2>Adicionar uma Proeficiência.</h2></div>
                 <div class="m-3">
                     <label for="pronome" class="fs-4 fw-bold">Nome da Proeficiência</label>
-                    <input type="text" id="pronome" name="pro" class="form-control fs-6 bg-black text-white" />
+                    <input type="text" id="pronome" name="pro" class="form-control fs-6 bg-black text-white"/>
                 </div>
                 <div class="clearfix">
                     <button type="button" class="btn btn-danger float-start" data-bs-dismiss="modal">Fechar</button>

@@ -2,7 +2,7 @@
 header("X-Robots-Tag: none");
 require_once "./../config/mysql.php";
 $error = $_GET["error"];
-switch($_GET["error"]){
+switch ($_GET["error"]) {
     case '400':
         $msg = "Requisição invalida.";
         break;
@@ -24,7 +24,7 @@ switch($_GET["error"]){
 <html lang="pt-br">
 <head>
     <!-- Required meta tags -->
-    <title><?php echo $error;?> - Fichas Ordem Paranormal</title>
+    <title><?php echo $error; ?> - Fichas Ordem Paranormal</title>
     <link rel="stylesheet" href="https://fichasop.cf/assets/css/carousel.css">
     <?php
     require_once './../includes/head.html';
@@ -33,18 +33,18 @@ switch($_GET["error"]){
 <body class="bg-black text-light">
 <?php
 $a = false;
-include_once "./../includes/top.php";?>
+include_once "./../includes/top.php"; ?>
 
 <div class="d-flex justify-content-center text-center">
     <div class="col-lg-4">
         <div class="card bg-black text-white border-light">
             <div class="card-body text-center">
-                <h1 class="text-danger">Error - <?echo $error;?></h1>
+                <h1 class="text-danger">Error - <? echo $error; ?></h1>
                 <div class="m-5">
-                    <h4><?php echo $msg;?></h4>
+                    <h4><?php echo $msg; ?></h4>
                 </div>
                 <a href="/" class="d-grid btn btn-outline-secondary">Ir para o inicio</a>
-             </div>
+            </div>
         </div>
     </div>
 </div>
@@ -55,7 +55,8 @@ include_once "./../includes/top.php";?>
             Powered by Bootstrap
         </div>
         <div class="float-end text-end">
-            Criado por <a href="mailto:ludafepi123456@gmail.com">Lucas</a>. Créditos ao <a href="https://twitch.tv/cellbit/">Cellbit</a>
+            Criado por <a href="mailto:ludafepi123456@gmail.com">Lucas</a>. Créditos ao <a
+                    href="https://twitch.tv/cellbit/">Cellbit</a>
         </div>
     </div>
 </footer>

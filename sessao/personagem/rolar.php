@@ -1,16 +1,16 @@
 <?php
 header("X-Robots-Tag: none");
 header('Content-Type: application/json');
-function Rolar($dado,$dano = false): array
+function Rolar($dado, $dano = false): array
 {
     $result = [];
     $dado = str_replace("-", "+-", $dado);
-    $a = explode('+',$dado);
+    $a = explode('+', $dado);
     foreach ($a as $nome => $dados) {
         if (!empty($dados)) {
             $b = explode('d', $dados);
             $b[0] = intval($b[0]);
-            if ($b[0] == 0 AND isset($b[1])) {
+            if ($b[0] == 0 and isset($b[1])) {
                 $b[0] = 1;
             } else
                 if ($b[0] < 0 and isset($b[1])) {
@@ -20,7 +20,7 @@ function Rolar($dado,$dano = false): array
             if (!empty($b[1])) {
                 $roll = $b[0];
                 $rice = $b[1];
-                if(!$dano){
+                if (!$dano) {
                     while ($result["d" . $nome]["TotalRolls"] != $roll) {
                         $result["d" . $nome]["TotalRolls"] += 1;
                         $result["d" . $nome]["d" . $rice]["d" . $result["d" . $nome]["TotalRolls"]] = rand(1, $rice);
@@ -42,13 +42,13 @@ function Rolar($dado,$dano = false): array
                         $result["d" . $nome]["TotalRolls"] += 1;
                         $result["d" . $nome]["d" . $rice]["d" . $result["d" . $nome]["TotalRolls"]] = rand(1, $rice);
                         $result["result"] += $result["d" . $nome]["d" . $rice]["d" . $result["d" . $nome]["TotalRolls"]];
-                        $result["print"] .= "+".$result["d" . $nome]["d" . $rice]["d" . $result["d" . $nome]["TotalRolls"]];
+                        $result["print"] .= "+" . $result["d" . $nome]["d" . $rice]["d" . $result["d" . $nome]["TotalRolls"]];
                     }
                     $result["d" . $nome]["dado"] = "d" . $rice;
                 }
             } else {
-                if ($b[0]>0){
-                    $b[0] = '+'.$b[0];
+                if ($b[0] > 0) {
+                    $b[0] = '+' . $b[0];
                 }
                 $result["result"] += $b[0];
                 $result["print"] .= $b[0];
@@ -59,4 +59,4 @@ function Rolar($dado,$dano = false): array
     return ($result);
 }
 
-if (!empty($_GET) || !empty($_POST))echo json_encode(Rolar($_POST["dado"]?:$_GET["dado"],$_POST["dano"]?:$_GET["dano"]));
+if (!empty($_GET) || !empty($_POST)) echo json_encode(Rolar($_POST["dado"] ?: $_GET["dado"], $_POST["dano"] ?: $_GET["dano"]));

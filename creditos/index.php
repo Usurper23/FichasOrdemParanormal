@@ -9,7 +9,8 @@
 </head>
 <body class="container-fluid bg-black text-white font6 text-center">
 <h1>Créditos</h1>
-Lembrando que este é um site criado por eu, um fã, que admira o trabalho do cellbit e quero ajudar a comunidade de qualquer forma, obrigado por usar meu site!
+Lembrando que este é um site criado por eu, um fã, que admira o trabalho do cellbit e quero ajudar a comunidade de
+qualquer forma, obrigado por usar meu site!
 Este site não é oficial do Ordem Paranormal.
 <br>
 <hr>
@@ -37,7 +38,8 @@ Este site não é oficial do Ordem Paranormal.
 <p><a href="https://twitter.com/marcosg78477762">Gaby_</a> — Ajudou muito com ideiais, sugestões e Apoio geral.</p>
 <p>Comunidade — o meu agradecimento especial à toda a comunidade, que me apoiou desde sempre.</p>
 <hr>
-Agradeço a todos que estão nesta lista, e a quem não está tambem, posso ter esquecido de colocar alguem, desculpa por isso, se quer remover o seu nome da lista, pode entrar em contato por <a href="mailto:lucaspines.pessoal.gmail.com">Email</a>.
+Agradeço a todos que estão nesta lista, e a quem não está tambem, posso ter esquecido de colocar alguem, desculpa por
+isso, se quer remover o seu nome da lista, pode entrar em contato por <a href="mailto:lucaspines.pessoal.gmail.com">Email</a>.
 
 </body>
 </html>

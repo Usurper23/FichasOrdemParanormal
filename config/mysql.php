@@ -4,64 +4,77 @@ session_start();
 require_once "config.php";
 $con = con();
 
-function asleep($time = 1){
+function asleep($time = 1)
+{
     usleep($time * 1000000);
 }
-function calcularvida($nex,$classe,$vigor){
-    $vigor = max($vigor,0);
-    switch ($classe){
+
+function calcularvida($nex, $classe, $vigor)
+{
+    $vigor = max($vigor, 0);
+    switch ($classe) {
         default:
-            $pv = ((5+$vigor)*(floor(($nex/5))-1))+(20+$vigor);
+            $pv = ((5 + $vigor) * (floor(($nex / 5)) - 1)) + (20 + $vigor);
             break;
         case 2:
-            $pv = ((4+$vigor)*(floor(($nex/5))-1))+(16+$vigor);
+            $pv = ((4 + $vigor) * (floor(($nex / 5)) - 1)) + (16 + $vigor);
             break;
         case 3:
-            $pv = ((3+$vigor)*(floor(($nex/5))-1))+(12+$vigor);
+            $pv = ((3 + $vigor) * (floor(($nex / 5)) - 1)) + (12 + $vigor);
             break;
     }
     return $pv;
 }
-function calcularpe($nex,$classe,$presenca) :int
+
+function calcularpe($nex, $classe, $presenca): int
 {
     $presenca = max($presenca, 0);
-    switch ($classe){
+    switch ($classe) {
         default:
-            $pe = (3 + $presenca) + ((1+$presenca) * (floor(($nex/5))-1));
+            $pe = (3 + $presenca) + ((1 + $presenca) * (floor(($nex / 5)) - 1));
             break;
         case 2:
-            $pe = (4 + $presenca) + ((2+$presenca) * (floor(($nex/5))-1));
+            $pe = (4 + $presenca) + ((2 + $presenca) * (floor(($nex / 5)) - 1));
             break;
         case 3:
-            $pe = (6 + $presenca) + ((3+$presenca) * (floor(($nex/5))-1));
+            $pe = (6 + $presenca) + ((3 + $presenca) * (floor(($nex / 5)) - 1));
             break;
     }
     return $pe;
 }
-function calcularesq($passiva,$reflexos){
-    if($reflexos > 0) {
+
+function calcularesq($passiva, $reflexos)
+{
+    if ($reflexos > 0) {
         return ($passiva + $reflexos);
     } else {
         return 0;
     }
 }
-function calcularblo($passiva,$luta){
+
+function calcularblo($passiva, $luta)
+{
     if ($luta > 0) {
         return ($passiva + $luta);
     } else {
         return 0;
     }
 }
-function minmax($int,$min=0,$max=99){
-    return min(max(intval($int), $min),$max);
+
+function minmax($int, $min = 0, $max = 99)
+{
+    return min(max(intval($int), $min), $max);
 }
-function test_input($data): string {
+
+function test_input($data): string
+{
     return htmlspecialchars(stripslashes(trim($data)));
 }
+
 function VerificarID($id): bool
 {
     $id = intval($id);
-    if(isset($_SESSION["UserID"])) {
+    if (isset($_SESSION["UserID"])) {
         $userid = $_SESSION["UserID"];
         if ($id > 0) {
             $con = con();
@@ -80,35 +93,39 @@ function VerificarID($id): bool
     }
     return false;
 }
+
 function VerificarMestre($mid): bool
 {
     $id = $_SESSION["UserID"];
     $con = con();
-    $q = $con->query("Select * FROM `missoes` WHERE `mestre` = '".$id."' and `id` = '".$mid."';");
-    if ($q->num_rows > 0){
+    $q = $con->query("Select * FROM `missoes` WHERE `mestre` = '" . $id . "' and `id` = '" . $mid . "';");
+    if ($q->num_rows > 0) {
         return true;
     } else {
         return false;
     }
 }
+
 function VerificarConvite($missao): bool
 {
     $missao = intval($missao);
     $con = con();
-    if ($missao>0){
-        $q = $con->query("SELECT * FROM ligacoes WHERE `id_missao` = '".$missao."' AND `id_usuario` = '".$_SESSION["UserID"]."' AND `id_ficha` is null;");
-        if ($q->num_rows){
+    if ($missao > 0) {
+        $q = $con->query("SELECT * FROM ligacoes WHERE `id_missao` = '" . $missao . "' AND `id_usuario` = '" . $_SESSION["UserID"] . "' AND `id_ficha` is null;");
+        if ($q->num_rows) {
             return true;
         }
     }
     return false;
 }
+
 function generate_tokens(): array
 {
     $selector = bin2hex(random_bytes(16));
     $validator = bin2hex(random_bytes(32));
     return [$selector, $validator, $selector . ':' . $validator];
 }
+
 function parse_token(string $token): ?array
 {
     $parts = explode(':', $token);
@@ -118,6 +135,7 @@ function parse_token(string $token): ?array
     }
     return null;
 }
+
 function find_user_token_by_selector(string $selector)
 {
     $con = con();
@@ -127,13 +145,15 @@ function find_user_token_by_selector(string $selector)
     $ra = $a->get_result();
     return mysqli_fetch_assoc($ra);
 }
+
 function delete_user_token(int $user_id): bool
 {
     $con = con();
-        $q = $con->prepare("DELETE FROM user_tokens WHERE user_id = ?");
-        $q->bind_param("i", $user_id);
-        return $q->execute();
+    $q = $con->prepare("DELETE FROM user_tokens WHERE user_id = ?");
+    $q->bind_param("i", $user_id);
+    return $q->execute();
 }
+
 function find_user_by_token(string $token)
 {
     $tokens = parse_token($token);
@@ -148,18 +168,20 @@ function find_user_by_token(string $token)
             WHERE selector = ? AND
                 expiry > now()
             LIMIT 1');
-    $a->bind_param("s",$tokens[0]);
+    $a->bind_param("s", $tokens[0]);
     $a->execute();
     $ra = $a->get_result();
     return mysqli_fetch_assoc($ra);
 }
+
 function insert_user_token(int $user_id, string $selector, string $hashed_validator, string $expiry): bool
 {
     $con = con();
     $q = $con->prepare("INSERT INTO `user_tokens` (`id`, `selector`, `hashed_validator`, `user_id`, `expiry`) VALUES (NULL, ? , ? , ? , ? );");
-    $q->bind_param("ssis",$selector,$hashed_validator,$user_id,$expiry);
+    $q->bind_param("ssis", $selector, $hashed_validator, $user_id, $expiry);
     return $q->execute();
 }
+
 function remember_me(int $user_id, int $day = 5)
 {
     [$selector, $validator, $token] = generate_tokens();
@@ -177,6 +199,7 @@ function remember_me(int $user_id, int $day = 5)
         setcookie('remember_me', $token, $expired_seconds);
     }
 }
+
 function logout(): void
 {
     if (is_user_logged_in()) {
@@ -200,6 +223,7 @@ function logout(): void
         // redirect to the login page
     }
 }
+
 function is_user_logged_in(): bool
 {
     // check the session
@@ -220,13 +244,15 @@ function is_user_logged_in(): bool
     }
     return false;
 }
-function logar(string $login):bool{
+
+function logar(string $login): bool
+{
     $con = con();
     $q = $con->prepare("select * from `usuarios` WHERE `login` = ?");
     $q->bind_param("s", $login);
     $q->execute();
     $rq = $q->get_result();
-    if($rq->num_rows){
+    if ($rq->num_rows) {
         $dados = mysqli_fetch_array($rq);
         $_SESSION["UserID"] = $dados["id"];
         $_SESSION["UserLogin"] = $dados["login"];
@@ -240,9 +266,10 @@ function logar(string $login):bool{
         return false;
     }
 }
+
 function token_is_valid($token): bool
 {
-    $e = explode(':',$token);
+    $e = explode(':', $token);
     $selector = $e[0];
     $validator = $e[1];
 
@@ -323,7 +350,7 @@ if (isset($_POST["cadastrar"])) {
         $a = $con->query("SELECT * FROM `usuarios` WHERE `email` = '" . $email . "' AND `status` = 1");
         $ab = $con->query("SELECT * FROM `usuarios` WHERE `email` = '" . $email . "' AND `status` = 0");
         if ($a->num_rows == 0) {
-            if($ab->num_rows == 0){
+            if ($ab->num_rows == 0) {
                 $b = $con->query("SELECT * FROM `usuarios` WHERE `login` = '" . $login . "'");
                 if ($b->num_rows == 0) {
                     $q = $con->prepare("INSERT INTO `usuarios`(`nome`,`login`,`senha`,`email`,`id`) VALUES (?,?,?,?,'')");
@@ -357,12 +384,12 @@ if (isset($_POST["cadastrar"])) {
             $msg = "Email já usado!";
         }
     }
-    if ($success){
+    if ($success) {
         $l = $con->prepare("SELECT * FROM `usuarios` WHERE `login`=?");
         $l->bind_param("s", $login);
         $l->execute();
         $gl = $l->get_result();
-        if ($gl->num_rows==1){
+        if ($gl->num_rows == 1) {
             $rl = mysqli_fetch_array($gl);
             $_SESSION["UserID"] = $rl["id"];
             $_SESSION["UserLogin"] = $rl["login"];
@@ -379,7 +406,7 @@ if (isset($_POST["cadastrar"])) {
     echo json_encode($data);
     exit;
 }
-if (isset($_POST["logar"])){
+if (isset($_POST["logar"])) {
     if ($_SESSION["timeout"] < 16) {
         //$data["timeout"] = $_SESSION["timeout"];
         $success = true;
@@ -408,7 +435,7 @@ if (isset($_POST["logar"])){
                 logar($login);
                 $msg = "Sucesso ao fazer login!";
                 $success = true;
-                if($_POST["lembrar"] == 'on' || $_POST["lembrar"] == 1){
+                if ($_POST["lembrar"] == 'on' || $_POST["lembrar"] == 1) {
                     remember_me($dados["id"]);
                 }
             } else {
@@ -424,11 +451,10 @@ if (isset($_POST["logar"])){
         $tentativas = 4 - $_SESSION["tentativas"];
 
 
-
         $data['timeout'] = $_SESSION["timeout"];
         $data["tentativas"] = $_SESSION["tentativas"];
         $data["success"] = $success;
-        $data["msg"] = $msg.($success?"":" (Tentativas restantes: $tentativas.)");
+        $data["msg"] = $msg . ($success ? "" : " (Tentativas restantes: $tentativas.)");
         echo json_encode($data);
         exit;
     } else {
@@ -441,10 +467,10 @@ if (isset($_POST["logar"])){
 }
 
 
-if (isset($_POST["update"])){
+if (isset($_POST["update"])) {
     $success = true;
-    $msg="";
-    switch($_POST["update"]) {
+    $msg = "";
+    switch ($_POST["update"]) {
         default:
             $data["success"] = false;
             $data["msg"] = "Houve uma falha, contate um administrador";
@@ -465,10 +491,10 @@ if (isset($_POST["update"])){
                 $success = false;
                 $msg = "Preencha todos os campos!";
             }
-            if($success){
-                if(isset($_SESSION["UserID"])) {
-                    $v = $con->query("SELECT * FROM `usuarios` WHERE `email` = '".$email."';");
-                    if(!$v->num_rows) {
+            if ($success) {
+                if (isset($_SESSION["UserID"])) {
+                    $v = $con->query("SELECT * FROM `usuarios` WHERE `email` = '" . $email . "';");
+                    if (!$v->num_rows) {
                         $q = $con->prepare("UPDATE `usuarios` SET `email`= ? WHERE `id`=?");
                         $q->bind_param("si", $email, $_SESSION["UserID"]);
                         $q->execute();
@@ -546,8 +572,8 @@ if (isset($_POST["update"])){
                 $login = test_input($_POST["login"]);
                 preg_match('/^[a-zA-Z-\'_0-9]*$/', $login);
                 if (isset($_SESSION["UserID"])) {
-                    $v = $con->query("SELECT * FROM `usuarios` WHERE `login` = '".$login."';");
-                    if(!$v->num_rows) {
+                    $v = $con->query("SELECT * FROM `usuarios` WHERE `login` = '" . $login . "';");
+                    if (!$v->num_rows) {
                         $q = $con->prepare("UPDATE `usuarios` SET `login`= ? WHERE `id`=?");
                         $q->bind_param("si", $login, $_SESSION["UserID"]);
                         $q->execute();
@@ -559,7 +585,7 @@ if (isset($_POST["update"])){
                             $success = false;
                         }
                     } else {
-                        $msg = "Login já existente;".$v->num_rows;
+                        $msg = "Login já existente;" . $v->num_rows;
                         $success = false;
                     }
                 } else {
@@ -578,7 +604,7 @@ if (isset($_POST["update"])){
                     $msg = "Apenas Letras e Espaços são permitidos no nome!";
                     $success = false;
                 } else {
-                    if(isset($_SESSION["UserID"])) {
+                    if (isset($_SESSION["UserID"])) {
                         $q = $con->prepare("UPDATE `usuarios` SET `nome`= ? WHERE `id`=?");
                         $q->bind_param("si", $nome, $_SESSION["UserID"]);
                         $q->execute();

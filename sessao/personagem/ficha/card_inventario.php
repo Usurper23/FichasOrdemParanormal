@@ -5,99 +5,108 @@
                 <div class="card-title">
                     <div class="position-absolute end-0">
                         <div class="float-end">
-                            <button class="btn btn-sm text-info fa-regular fa-eye" id="vera" title="Ver informações inventario"></button>
-                            <?php if ($edit){?>
-                            <button class="btn btn-sm text-warning" data-bs-toggle="modal" data-bs-target="#editinv" title="Editar Inventario">
-                                <i class="fa-regular fa-pencil"></i>
-                            </button>
-                            <?php if (!isset($_GET["popout"])){?>
-                                <button class="btn btn-sm text-white popout" title="PopOut">
-                                    <i class="fa-regular fa-rectangle-vertical-history"></i>
+                            <button class="btn btn-sm text-info fa-regular fa-eye" id="vera"
+                                    title="Ver informações inventario"></button>
+                            <?php if ($edit) { ?>
+                                <button class="btn btn-sm text-warning" data-bs-toggle="modal" data-bs-target="#editinv"
+                                        title="Editar Inventario">
+                                    <i class="fa-regular fa-pencil"></i>
                                 </button>
-                            <?php }?>
-                            <?php }?>
+                                <?php if (!isset($_GET["popout"])) { ?>
+                                    <button class="btn btn-sm text-white popout" title="PopOut">
+                                        <i class="fa-regular fa-rectangle-vertical-history"></i>
+                                    </button>
+                                <?php } ?>
+                            <?php } ?>
                         </div>
                     </div>
                     <h1 class="text-center">Inventario</h1>
                     <?php
-                    $invmax = 5 +(5*$forca?:0);
+                    $invmax = 5 + (5 * $forca ?: 0);
                     ?>
-                    <h4 class="text-center">Peso carregado: <?=$espacosusados?>/<?=$invmax?></h4>
+                    <h4 class="text-center">Peso carregado: <?= $espacosusados ?>/<?= $invmax ?></h4>
                 </div>
                 <div class="py-2" id="inv">
                     <?php
-                    if ($s[1]->num_rows > 0){
-                    ?>
+                    if ($s[1]->num_rows > 0) {
+                        ?>
                         <h3 class="mx-2">Armas</h3>
-                        <table class="table table-sm table-bordered border-dark bg-black text-white table-borderless font2" id="armas">
-                        <thead>
-                        <tr>
-                            <th scope="col">Nome</th>
-                            <th class="trocavision" scope="col" style="display: none;">Tipo</th>
-                            <th class="trocavision" scope="col">Ataque</th>
-                            <th class="trocavision" scope="col" style="display: none;">Alcance</th>
-                            <th class="trocavision" scope="col">Dano</th>
-                            <th class="trocavision" scope="col">Crítico</th>
-                            <th class="trocavision" scope="col" style="display: none;">Recarga</th>
-                            <th class="trocavision" scope="col" style="display: none;">Especial</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        <?php foreach ($s[1] as $row ): ?>
+                        <table class="table table-sm table-bordered border-dark bg-black text-white table-borderless font2"
+                               id="armas">
+                            <thead>
                             <tr>
-                                <td><?php echo $row['arma']; ?></td>
-                                <td class="trocavision" style="display: none;"><?php echo $row['tipo'];?></td>
-                                <td class="trocavision">
-                                    <button
-                                            class="btn btn-sm fw-bolder text-info"
-                                            title="Rolar Ataque"
-                                            <?php if ($edit){?>
-                                                onclick="rolar('<?=$dado[$row['dado']] ."d20+". $row['ataque'] ."+". $luta;?>')"
+                                <th scope="col">Nome</th>
+                                <th class="trocavision" scope="col" style="display: none;">Tipo</th>
+                                <th class="trocavision" scope="col">Ataque</th>
+                                <th class="trocavision" scope="col" style="display: none;">Alcance</th>
+                                <th class="trocavision" scope="col">Dano</th>
+                                <th class="trocavision" scope="col">Crítico</th>
+                                <th class="trocavision" scope="col" style="display: none;">Recarga</th>
+                                <th class="trocavision" scope="col" style="display: none;">Especial</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <?php foreach ($s[1] as $row): ?>
+                                <tr>
+                                    <td><?php echo $row['arma']; ?></td>
+                                    <td class="trocavision" style="display: none;"><?php echo $row['tipo']; ?></td>
+                                    <td class="trocavision">
+                                        <button
+                                                class="btn btn-sm fw-bolder text-info"
+                                                title="Rolar Ataque"
+                                            <?php if ($edit) { ?>
+                                                onclick="rolar('<?= $dado[$row['dado']] . "d20+" . $row['ataque'] . "+" . $luta; ?>')"
                                             <?php } else { ?>
 
-                                            <?php }?> disabled><i class="fa-regular fa-dice"></i> <?php if($row['ataque']>=0){echo '+'.$row['ataque'];}else{echo $row['ataque'];}; ?></button>
-                                </td>
-                                <td class="trocavision" style="display: none;"><?=$row['alcance'];?></td>
-                                <td class="trocavision">
-                                    <button
-                                            class="btn btn-sm fw-bolder text-danger"
-                                            title="Rolar Dano"
-                                            <?php if ($edit){?>
-                                                onclick="rolar('<?=$row['dano'];?>',true)"
-                                            <?php }else { ?>
+                                            <?php } ?> disabled><i
+                                                    class="fa-regular fa-dice"></i> <?php if ($row['ataque'] >= 0) {
+                                                echo '+' . $row['ataque'];
+                                            } else {
+                                                echo $row['ataque'];
+                                            }; ?></button>
+                                    </td>
+                                    <td class="trocavision" style="display: none;"><?= $row['alcance']; ?></td>
+                                    <td class="trocavision">
+                                        <button
+                                                class="btn btn-sm fw-bolder text-danger"
+                                                title="Rolar Dano"
+                                            <?php if ($edit) { ?>
+                                                onclick="rolar('<?= $row['dano']; ?>',true)"
+                                            <?php } else { ?>
                                                 disabled
-                                            <?php }?>>
-                                        <i class="fa-regular fa-dice"></i>
-                                        <?=$row['dano'];?>
-                                    </button>
-                                </td>
-                                <td class="trocavision">
-                                    <button
-                                            class="btn btn-sm fw-bolder text-danger"
-                                            title="Rolar Dano critico"
-                                            <?php if ($edit){?>
-                                                onclick="rolar('<?=$row['critico']; ?>',true)"
-                                            <?php }else { ?>
+                                            <?php } ?>>
+                                            <i class="fa-regular fa-dice"></i>
+                                            <?= $row['dano']; ?>
+                                        </button>
+                                    </td>
+                                    <td class="trocavision">
+                                        <button
+                                                class="btn btn-sm fw-bolder text-danger"
+                                                title="Rolar Dano critico"
+                                            <?php if ($edit) { ?>
+                                                onclick="rolar('<?= $row['critico']; ?>',true)"
+                                            <?php } else { ?>
                                                 disabled
-                                            <?php }?>>
-                                        <i class="fa-regular fa-dice"></i>
-                                        <?=$row['critico']; ?>
-                                    </button>
-                                </td>
-                                <td class="trocavision" style="display: none;"><?=$row['recarga']; ?></td>
-                                <td class="trocavision" style="display: none;"><?=$row['especial']; ?></td>
-                            </tr>
-                        <?php endforeach; ?>
-                        </tbody>
-                    </table>
-                    <?php
+                                            <?php } ?>>
+                                            <i class="fa-regular fa-dice"></i>
+                                            <?= $row['critico']; ?>
+                                        </button>
+                                    </td>
+                                    <td class="trocavision" style="display: none;"><?= $row['recarga']; ?></td>
+                                    <td class="trocavision" style="display: none;"><?= $row['especial']; ?></td>
+                                </tr>
+                            <?php endforeach; ?>
+                            </tbody>
+                        </table>
+                        <?php
                     }
 
 
-                    if ($s[4]->num_rows > 0){
-                    ?>
+                    if ($s[4]->num_rows > 0) {
+                        ?>
                         <h3 class="mx-2">Itens</h3>
-                        <table class="table table-bordered border-dark table-sm bg-black text-white table-borderless font2" id="itens">
+                        <table class="table table-bordered border-dark table-sm bg-black text-white table-borderless font2"
+                               id="itens">
                             <thead>
                             <tr>
                                 <th scope="col">Nome</th>
@@ -107,17 +116,17 @@
                             </tr>
                             </thead>
                             <tbody>
-                            <?php foreach ($s[4] as $row ): ?>
+                            <?php foreach ($s[4] as $row): ?>
                                 <tr>
-                                    <td><?=$row['nome']; ?></td>
-                                    <td class="trocavision"><?=$row['descricao'];?></td>
-                                    <td class="trocavision" style="display: none;"><?=$row['espaco']; ?></td>
-                                    <td class="trocavision" style="display: none;"><?=$row['prestigio']; ?></td>
+                                    <td><?= $row['nome']; ?></td>
+                                    <td class="trocavision"><?= $row['descricao']; ?></td>
+                                    <td class="trocavision" style="display: none;"><?= $row['espaco']; ?></td>
+                                    <td class="trocavision" style="display: none;"><?= $row['prestigio']; ?></td>
                                 </tr>
                             <?php endforeach; ?>
                             </tbody>
                         </table>
-                    <?php
+                        <?php
                     }
                     ?>
                 </div>

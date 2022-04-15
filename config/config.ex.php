@@ -1,14 +1,15 @@
 <?php //RENAME TO "config.php"
-function con(){
-$servername = "";
-$username = "";
-$password = "";
-$db = "";
-$con = new mysqli($servername, $username, $password, $db);
-if ($con->connect_error) {
-die("Connection failed: " . $con->connect_error);
-}
-return $con;
+function con()
+{
+    $servername = "";
+    $username = "";
+    $password = "";
+    $db = "";
+    $con = new mysqli($servername, $username, $password, $db);
+    if ($con->connect_error) {
+        die("Connection failed: " . $con->connect_error);
+    }
+    return $con;
 }
 
 function cryptthis($string): string
