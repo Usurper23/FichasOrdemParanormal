@@ -184,26 +184,26 @@
         <div class="modal-content bg-black border-light">
             <form class="modal-body" method="post" autocomplete="off" id="formedititem">
                 <div class="border-0 modal-header fs-1">Editar Item</div>
-                <div class="row my-5">
-                    <div class="col">
+                <div class="row my-5 justify-content-center">
+                    <div class="col-auto">
                         <div class="input-group">
                             <label for="enom" class="p-1 input-group-text border-light bg-black text-white border-end-0">Nome:</label>
                             <input id="enom" name="nome" type="text" class="form-control border-start-0 border-light bg-black text-white" />
                         </div>
                     </div>
-                    <div class="col">
+                    <div class="col-auto">
                         <div class="input-group">
                             <label for="edes" class="p-1 input-group-text border-light bg-black text-white border-end-0">Descrição:</label>
                             <input id="edes" name="descricao" type="text" class="form-control border-start-0 border-light bg-black text-white" />
                         </div>
                     </div>
-                    <div class="col">
+                    <div class="col-auto">
                         <div class="input-group">
-                            <label for="epes" class="p-1 input-group-text border-light bg-black text-white border-end-0">Peso:</label>
+                            <label for="epes" class="p-1 input-group-text border-light bg-black text-white border-end-0">Peso/Espaço:</label>
                             <input id="epes" name="peso" type="number" class="form-control border-start-0 border-light bg-black text-white" />
                         </div>
                     </div>
-                    <div class="col">
+                    <div class="col-auto">
                         <div class="input-group">
                             <label for="epre" class="p-1 input-group-text border-light bg-black text-white border-end-0">Prestigio:</label>
                             <input id="epre" name="prestigio" type="number" class="form-control border-start-0 border-light bg-black text-white" />

@@ -54,8 +54,8 @@
                                             <?php if ($edit){?>
                                                 onclick="rolar('<?=$dado[$row['dado']] ."d20+". $row['ataque'] ."+". $luta;?>')"
                                             <?php } else { ?>
-                                            disabled
-                                            <?php }?>><i class="fa-regular fa-dice"></i> <?php if($row['ataque']>=0){echo '+'.$row['ataque'];}else{echo $row['ataque'];}; ?></button>
+
+                                            <?php }?> disabled><i class="fa-regular fa-dice"></i> <?php if($row['ataque']>=0){echo '+'.$row['ataque'];}else{echo $row['ataque'];}; ?></button>
                                 </td>
                                 <td class="trocavision" style="display: none;"><?=$row['alcance'];?></td>
                                 <td class="trocavision">

@@ -4,6 +4,9 @@
             <div class="clearfix">
                 <?php if ($edit){?>
                     <div class="float-end">
+                        <button class="btn btn-sm text-warning" data-bs-toggle="modal" data-bs-target="#editritual" title="Editar Rituais">
+                            <i class="fa-regular fa-pencil"></i>
+                        </button>
                         <button class="btn btn-sm text-success" data-bs-toggle="modal" data-bs-target="#addritual" title="Adicionar Ritual">
                             <i class="fa-regular fa-square-plus"></i>
                         </button>
@@ -34,9 +37,13 @@
                             </button>
                         </div>
                         <span class="form-control form-control-sm bg-black text-white m-1">Ritual: <?=$r["nome"]?></span>
-                        <span class="form-control form-control-sm bg-black text-white m-1">Circulo: <?=$r["circulo"]?></span>
-                        <span class="form-control form-control-sm bg-black text-white m-1">Elemento: <?=$r["elemento"]?></span>
-                        <span class="form-control form-control-sm bg-black text-white m-1">Conjuração: <?=$r["conjuracao"]?></span>
+                        <?=$r["circulo"]?'<span class="form-control form-control-sm bg-black text-white m-1">Circulo: '.$r["circulo"].'</span>':""?>
+                        <?=$r["elemento"]?'<span class="form-control form-control-sm bg-black text-white m-1">Elemento: '.$r["elemento"].'</span>':""?>
+                        <?=$r["conjuracao"]?'<span class="form-control form-control-sm bg-black text-white m-1">Conjuração: '.$r["conjuracao"].'</span>':""?>
+                        <?=$r["alvo"]?'<span class="form-control form-control-sm bg-black text-white m-1">Alvo: '.$r["alvo"].'</span>':""?>
+                        <?=$r["duracao"]?'<span class="form-control form-control-sm bg-black text-white m-1">Duração: '.$r["duracao"].'</span>':""?>
+                        <?=$r["alcance"]?'<span class="form-control form-control-sm bg-black text-white m-1">Alcance: '.$r["alcance"].'</span>':""?>
+                        <?=$r["resistencia"]?'<span class="form-control form-control-sm bg-black text-white m-1">Resistência: '.$r["resistencia"].'</span>':""?>
                         <textarea aria-label="Descrição" class="form-control form-control-sm bg-black text-white m-1" disabled>Efeito: <?=$r["efeito"]?></textarea>
                     </div>
                 </div>
