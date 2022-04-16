@@ -6,6 +6,18 @@ $success = true;
 if ($edit) {
     if (isset($_POST['status'])) {
         switch ($_POST['status']) {
+            case 'roll':
+                include_once "./ficha/functions_ficha.php";
+                $dado = test_input($_POST["dado"]);
+                if(ClearRolar($dado)) {
+                    $data = Rolar($dado);
+                    $data["success"] = true;
+                } else {
+                    $data = ClearRolar($dado,true);
+                }
+                echo json_encode($data);
+                exit;
+                break;
             case 'addritual':
                 $foto = intval($_POST["foto"]);
                 if ($foto == 2) {

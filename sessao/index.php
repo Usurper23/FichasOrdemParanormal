@@ -1,67 +1,65 @@
 <?php require_once "./../config/mysql.php";
 $con = con();
+
 if (!isset($_SESSION["UserID"])) {
-    echo "<script>window.location.href='/'</script>";
-}
-$userid = $_SESSION["UserID"];
-if ($_POST["criarmissao"] == 1) {
-    $success = true;
-    $msg = "";
-    $data = [];
-    if (!empty($_POST["title"])) {
-        $title = test_input($_POST["title"]);
-        if (strlen($title) < 5) {
-            $success = false;
-            $msg = "Seu titulo precisa conter no minimo 5 caracteres.";
-        }
-    } else {
-        $success = false;
-        $msg = "Sua missão precisa de um titulo";
-    }
-    if (!empty($_POST["desc"])) {
-        $desc = test_input($_POST["desc"]);
-        if (strlen($desc) < 50) {
-            $success = false;
-            $msg = "Sua introdução precisa conter no minimo 50 caracteres.(Atual: " . strlen($desc) . ")";
-        }
-    } else {
-        $success = false;
-        $msg = "Sua missão precisa de uma descrição";
-    }
-    if ($success) {
-        $q = $con->prepare("INSERT INTO `missoes` (`nome`, `descricao`, `mestre`) VALUES (?, ?, ?);");
-        $q->bind_param("ssi", $title, $desc, $_SESSION["UserID"]);
-        $q->execute();
-        $rq = $q->get_result();
-        if ($q) {
-            $msg = "Sucesso ao criar missão.";
-        } else {
-            $success = false;
-            $msg = "Falha ao criar missão.";
-        }
-    }
-    $data["success"] = $success;
-    $data["msg"] = $msg;
-    echo json_encode($data);
+    header("Location: /");
     exit;
 }
+$userid = $_SESSION["UserID"];
+
+
+
 if (isset($_POST["status"])) {
     $success = true;
     $msg = '';
     switch ($_POST["status"]) {
+        case 'criarmissao':
+            if (!empty($_POST["title"])) {
+                $title = test_input($_POST["title"]);
+                if (strlen($title) < 5) {
+                    $success = false;
+                    $msg = "Seu titulo precisa conter no minimo 5 caracteres.";
+                }
+            } else {
+                $success = false;
+                $msg = "Sua missão precisa de um titulo";
+            }
+            if (!empty($_POST["desc"])) {
+                $desc = test_input($_POST["desc"]);
+                if (strlen($desc) < 50) {
+                    $success = false;
+                    $msg = "Sua introdução precisa conter no minimo 50 caracteres.(Atual: " . strlen($desc) . ")";
+                }
+            } else {
+                $success = false;
+                $msg = "Sua missão precisa de uma descrição";
+            }
+            if ($success) {
+                $q = $con->prepare("INSERT INTO `missoes` (`nome`, `descricao`, `mestre`) VALUES (?, ?, ?);");
+                $q->bind_param("ssi", $title, $desc, $_SESSION["UserID"]);
+                $q->execute();
+                if ($con->affected_rows) {
+                    $msg = "Sucesso ao criar missão.";
+                } else {
+                    $success = false;
+                    $msg = "Falha ao criar missão.";
+                }
+            }
+            $data["success"] = $success;
+            $data["msg"] = $msg;
+            echo json_encode($data);
+            exit;
+            break;
         case 'player':
             $idficha = intval($_POST["id_ficha"]);
             $view = intval($_POST["view"]);
-            $q = $con->query("UPDATE `fichas_personagem` SET `public` = '$view' WHERE `id` = '$idficha' AND `usuario` = '$userid'");
+            $con->query("UPDATE `fichas_personagem` SET `public` = '$view' WHERE `id` = '$idficha' AND `usuario` = '$userid'");
             break;
-
         case 'deleteficha':
-            $idficha = intval($_POST["id"]);
-            $q = $con->query("DELETE FROM `fichas_personagem` WHERE `id` = '$idficha' AND `usuario` = '$userid';");
+            $con->query("DELETE FROM `fichas_personagem` WHERE `id` = '".intval($_POST["id"])."' AND `usuario` = '$userid';");
             break;
         case 'deletemissao':
-            $idm = intval($_POST["id"]);
-            $q = $con->query("DELETE FROM `missoes` WHERE `id` = '$idm' AND `mestre` = '$userid';");
+            $con->query("DELETE FROM `missoes` WHERE `id` = '".intval($_POST["id"])."' AND `mestre` = '$userid';");
             break;
         case 'editmis':
             if (!empty($_POST["title"])) {
@@ -85,8 +83,8 @@ if (isset($_POST["status"])) {
                 $msg = "Sua missão precisa de uma descrição";
             }
             if ($success === true) {
-                $q = $con->prepare("UPDATE `missoes` SET `nome` = ?, `descricao` = ? WHERE `id` = ?");
                 $id = intval($_POST["id"]);
+                $q = $con->prepare("UPDATE `missoes` SET `nome` = ?, `descricao` = ? WHERE `id` = ?");
                 $q->bind_param("ssi", $title, $desc, $id);
                 $q->execute();
                 $success = $con->affected_rows;
@@ -156,7 +154,10 @@ require_once "./../includes/top.php";
                     <div class="row justify-content-center">
                         <?php
                         $a = $con->query("Select * from `ligacoes` WHERE `id_usuario` = '" . $_SESSION["UserID"] . "';");
+
                         if ($a->num_rows > 0) {
+
+
                             while ($dl = mysqli_fetch_assoc($a)) {
                                 $b = $con->query("SELECT * FROM `missoes` WHERE `missoes`.`id` ='" . $dl["id_missao"] . "';");
                                 $c = $con->query("SELECT * FROM `fichas_personagem` WHERE `id` ='" . $dl["id_ficha"] . "';");
@@ -350,7 +351,7 @@ require_once "./../includes/top.php";
             </div>
             <div class="modal-footer border-0">
                 <button type="submit" class="btn btn-primary">Criar Missão</button>
-                <input type="hidden" name="criarmissao" value="1">
+                <input type="hidden" name="status" value="criarmissao">
             </div>
         </form>
     </div>

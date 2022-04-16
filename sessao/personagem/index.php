@@ -388,6 +388,7 @@ if (!isset($_GET["popout"])) {
 
         <!-----------------------------------------------------------Inventario------------------------------------>
 
+        <div class="row justify-content-center">
         <?php
         if (!isset($_GET["popout"])) {
             include_once "./ficha/card_inventario.php";
@@ -396,18 +397,28 @@ if (!isset($_GET["popout"])) {
                 include_once "./ficha/card_inventario.php";
         }
         ?>
-    </div>
+        </div>
 
-
-    <?php
-    if (!isset($_GET["rituais"])) {
-        include_once "./ficha/card_rituais.php";
-    } else {
-        if ($_GET["popout"] == 'inventario')
+        <div class="row justify-content-center">
+        <?php
+        if (!isset($_GET["rituais"])) {
             include_once "./ficha/card_rituais.php";
-    }
-    ?>
-
+        } else {
+            if ($_GET["popout"] == 'inventario')
+                include_once "./ficha/card_rituais.php";
+        }
+        ?>
+        </div>
+        <div class="row justify-content-center">
+        <?php
+        if (!isset($_GET["rolardados"])) {
+            include_once "./ficha/card_rolardados.php";
+        } else {
+            if ($_GET["popout"] == 'rolardados')
+                include_once "./ficha/card_rolardados.php";
+        }
+        ?>
+        </div>
     </div>
 </main>
 <div id="modalsaki">

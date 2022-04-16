@@ -356,12 +356,12 @@ if (isset($_POST["cadastrar"])) {
                     $q = $con->prepare("INSERT INTO `usuarios`(`nome`,`login`,`senha`,`email`,`id`) VALUES (?,?,?,?,'')");
                     $q->bind_param("ssss", $nome, $login, $senha, $email);
                     $q->execute();
-                    if ($q->affected_rows == 1) {
+                    if ($con->affected_rows > 0) {
                         $success = true;
                         $msg = "Sucesso ao criar conta!";
                     } else {
                         $success = false;
-                        $msg = "Falha ao criar conta!";
+                        $msg = "Falha ao criar conta!".$q->affected_rows.$con->affected_rows;
                     }
                 } else {
                     $success = false;

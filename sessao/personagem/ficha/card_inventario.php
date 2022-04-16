@@ -1,5 +1,4 @@
-<div class="row" id="card_inventario">
-    <div class="col pb-2 px-1">
+<div class="col pb-2 px-1" id="card_inventario">
         <div class="card bg-black text-white border-light">
             <div class="card-body p-0">
                 <div class="card-title">
@@ -54,11 +53,11 @@
                                         <button
                                                 class="btn btn-sm fw-bolder text-info"
                                                 title="Rolar Ataque"
-                                            <?php if ($edit) { ?>
+                                            <?php /*if ($edit) { ?>
                                                 onclick="rolar('<?= $dado[$row['dado']] . "d20+" . $row['ataque'] . "+" . $luta; ?>')"
                                             <?php } else { ?>
-
-                                            <?php } ?> disabled><i
+                                                disabled
+                                            <?php }  */?> ><i
                                                     class="fa-regular fa-dice"></i> <?php if ($row['ataque'] >= 0) {
                                                 echo '+' . $row['ataque'];
                                             } else {
@@ -133,4 +132,3 @@
             </div>
         </div>
     </div>
-</div>
