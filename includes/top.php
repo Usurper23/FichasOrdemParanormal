@@ -253,13 +253,12 @@ if (!isset($_SESSION["UserID"])) {
             });
         });
 
-        <?php if ($_GET["convite"] == 1){ ?>
+        <?php if (isset($_GET["convite"]) && $_GET["convite"] == 1){ ?>
         var modalperfil = new bootstrap.Modal(document.getElementById('cadastrar'), {
             keyboard: false
         })
         modalperfil.show()
         <?php }?>
-
     </script>
 <?php } else { ?>
     <div class="modal fade" id="perfil" tabindex="-1" aria-label="Perfil Modal" aria-hidden="true">

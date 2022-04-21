@@ -178,7 +178,7 @@ require_once "./../includes/top.php";
                                                                     class="fa-solid fa-gear"></i></button>
                                                         <button type="button" class="btn btn-sm"
                                                                 title="Ficha está atualmente <?= $cd["public"] ? "Visivel" : "Invisivel" ?>">
-                                                            <i class="fa-solid fa-eye<?= $dl["public"] ? " text-success" : "-slash text-danger" ?>"></i>
+                                                            <i class="fa-solid fa-eye<?=isset($dl["public"])?$dl["public"]?" text-success":"-slash text-danger":''?>"></i>
                                                         </button>
                                                     </div>
                                                     <?php

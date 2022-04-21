@@ -15,7 +15,7 @@ $id = intval($_GET["id"] ?: 0);
 
 // Se o ‘id’ for nulo/não existir, levar para pagina inicial...
 if ($id == 0) {
-    echo "<script>window.location.href='..'</script>";
+    header("Location: ./..");
 }
 
 
@@ -23,7 +23,8 @@ $qs = $con->query("SELECT * FROM `fichas_personagem` WHERE `id` = '$id'");
 if ($qs->num_rows) {
     $rqs = mysqli_fetch_array($qs);
 } else {
-    echo "<script>window.location.href='..'</script>";
+    header("Location: ./..");
+    exit;
 }
 
 
@@ -42,13 +43,15 @@ if ($lig->num_rows == 1) {
 }
 
 //Verifica se tem permissão para usar ficha
-if ($_SESSION["UserAdmin"] || $dados_missao["mestre"] == $userid) {
+if ($_SESSION["UserAdmin"] || (isset($dados_missao) and $dados_missao["mestre"] == $userid)) {
     $edit = true;
 } else {
-    if ($dados_missao === null and VerificarID($id) or $dados_missao["status"] and VerificarID($id)) {
+    if ((isset($dados_missao) && $dados_missao["status"]) || VerificarID($id)) {
         $edit = true;
     } else {
-        if (!$rqs["public"]) echo "<script>window.location.href='..'</script>";
+        if (isset($rqs) and !$rqs["public"]) {
+            header("Location: ./..");
+        }
     }
 }
 
@@ -63,7 +66,7 @@ require_once "./ficha/functions_ficha.php";
 
 //Pega todos os dados da ficha: Principal
 
-if ($rqs != NULL) {
+if (isset($rqs)) {
     $nu = $con->query("SELECT * FROM `usuarios` WHERE `usuarios`.`id` = " . ($rqs["usuario"] ?: 0));
     $usuario = (mysqli_fetch_assoc($nu))["nome"];
     $nome = $rqs["nome"];
@@ -251,7 +254,7 @@ if ($rqs != NULL) {
 
     $fisica = $rqs["fisica"];
     $balistica = $rqs["balistica"];
-    $insanidade = $rqs["sanidade"];
+    $insanidade = $rqs["mental"];
     $sangue = $rqs["sangue"];
     $conhecimento = $rqs["conhecimento"];
     $energia = $rqs["energia"];
@@ -281,6 +284,8 @@ if ($rqs != NULL) {
     $tecnologia = $rqs["tecnologia"];
     $vontade = $rqs["vontade"];
 
+} else {
+    header("Location: ./..");
 }
 //pega todos os dados da ficha: Rituais
 $s[6] = $con->query("Select * From `rituais` where `id_ficha` = '$id';");
@@ -312,7 +317,7 @@ if ($edit) {
     <meta charset="UTF-8">
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
-    <title><?php echo $nome ?: "Desconhecido"; ?> - Ficha OP</title>
+    <title><?php echo $nome?: "Desconhecido"; ?> - Ficha OP</title>
 </head>
 <body class="bg-black text-light font7">
 

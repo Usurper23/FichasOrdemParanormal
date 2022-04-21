@@ -2,7 +2,7 @@
     <div class="card h-100 bg-black border-light">
         <div class="card-body p-0 font1">
             <?php if ($edit) { ?>
-                <div class="">
+                <div class="clearfix">
                     <div class="p-1 float-start text-info">
                         <i class="fa-regular fa-circle-info"></i>
                         <span> clique para rolar dados</span>
@@ -23,21 +23,11 @@
             <h1 class="font6 text-center">Atributos</h1>
             <div class="container-fluid p-0 mb-2">
                 <div class="containera mx-auto text-white">
-                    <button class="atributos p-0 for btn rounded-circle text-white font4" <?php if (!$edit) {
-                        echo "disabled";
-                    } ?> onclick="rolar('<?php echo $dado["for"]; ?>d20');"><?php echo $for; ?></button>
-                    <button class="atributos p-0 agi btn rounded-circle text-white font4" <?php if (!$edit) {
-                        echo "disabled";
-                    } ?> onclick="rolar('<?php echo $dado["agi"]; ?>d20');"><?php echo $agi; ?></button>
-                    <button class="atributos p-0 int btn rounded-circle text-white font4" <?php if (!$edit) {
-                        echo "disabled";
-                    } ?> onclick="rolar('<?php echo $dado["int"]; ?>d20');"><?php echo $int; ?></button>
-                    <button class="atributos p-0 pre btn rounded-circle text-white font4" <?php if (!$edit) {
-                        echo "disabled";
-                    } ?> onclick="rolar('<?php echo $dado["pre"]; ?>d20');"><?php echo $pre; ?></button>
-                    <button class="atributos p-0 vig btn rounded-circle text-white font4" <?php if (!$edit) {
-                        echo "disabled";
-                    } ?> onclick="rolar('<?php echo $dado['vig']; ?>d20');"><?php echo $vig; ?></button>
+                    <button class="atributos p-0 for btn rounded-circle text-white font4" <?=$edit?"onclick='rolar(".'"'.$dado["for"].'d20");'."'":'disabled'?>><?=$for?></button>
+                    <button class="atributos p-0 agi btn rounded-circle text-white font4" <?=$edit?"onclick='rolar(".'"'.$dado["agi"].'d20");'."'":'disabled'?>><?=$agi?></button>
+                    <button class="atributos p-0 int btn rounded-circle text-white font4" <?=$edit?"onclick='rolar(".'"'.$dado["int"].'d20");'."'":'disabled'?>><?=$int?></button>
+                    <button class="atributos p-0 pre btn rounded-circle text-white font4" <?=$edit?"onclick='rolar(".'"'.$dado["pre"].'d20");'."'":'disabled'?>><?=$pre?></button>
+                    <button class="atributos p-0 vig btn rounded-circle text-white font4" <?=$edit?"onclick='rolar(".'"'.$dado["vig"].'d20");'."'":'disabled'?>><?=$vig?></button>
                     <img src="https://fichasop.cf/assets/img/Atributos.png" alt="Atributos">
                 </div>
             </div>

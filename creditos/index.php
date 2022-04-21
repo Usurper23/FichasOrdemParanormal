@@ -14,7 +14,7 @@ qualquer forma, obrigado por usar meu site!
 Este site não é oficial do Ordem Paranormal.
 <br>
 <hr>
-<a class="fs-3 link-light" href="http://ordemparanormalrpg.com.br">Criadores Originais de Ordem paranormal</a>
+<a class="fs-3 link-light" href="http://ordem.jamboeditora.com.br/#autores">Criadores Originais de Ordem paranormal</a>
 <p>Cellbit</p>
 <p>Mestre Pedrok</p>
 <p>Sil (Silvia Sala)</p>

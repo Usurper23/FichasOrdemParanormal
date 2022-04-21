@@ -9,6 +9,8 @@ function asleep($time = 1)
     usleep($time * 1000000);
 }
 
+$_SESSION["timeout"]=$_SESSION["timeout"]?:0;
+
 function calcularvida($nex, $classe, $vigor)
 {
     $vigor = max($vigor, 0);
@@ -406,11 +408,11 @@ if (isset($_POST["cadastrar"])) {
     echo json_encode($data);
     exit;
 }
+
 if (isset($_POST["logar"])) {
-    if ($_SESSION["timeout"] < 16) {
-        //$data["timeout"] = $_SESSION["timeout"];
-        $success = true;
-        asleep($_SESSION["timeout"]);
+    $success = true;
+    if (!isset($_SESSION["timeout"]) || $_SESSION["timeout"] <= 5) {
+        asleep($_SESSION["timeout"]*4);
         if (!empty($_POST["login"])) {
             $login = test_input($_POST["login"]);
             preg_match('/^[a-zA-Z-\'_0-9]*$/', $login);
@@ -435,34 +437,25 @@ if (isset($_POST["logar"])) {
                 logar($login);
                 $msg = "Sucesso ao fazer login!";
                 $success = true;
-                if ($_POST["lembrar"] == 'on' || $_POST["lembrar"] == 1) {
+                if (isset($_POST["lembrar"]) && ($_POST["lembrar"] == 'on' || $_POST["lembrar"] == 1)) {
                     remember_me($dados["id"]);
                 }
             } else {
                 $msg = "Usuario/Senha incorretos!";
                 $success = false;
-
             }
 
         }
-        $_SESSION["timeout"] *= 2;
-
-        $_SESSION["tentativas"] += 1;
-        $tentativas = 4 - $_SESSION["tentativas"];
-
-
-        $data['timeout'] = $_SESSION["timeout"];
-        $data["tentativas"] = $_SESSION["tentativas"];
+        $_SESSION["timeout"] += 1;
+        $data["tentativas"] = 5 - $_SESSION["timeout"];
         $data["success"] = $success;
-        $data["msg"] = $msg . ($success ? "" : " (Tentativas restantes: $tentativas.)");
-        echo json_encode($data);
-        exit;
+        $data["msg"] = $msg . ($success ? "" : " (Tentativas restantes: ".$data["tentativas"].".)");
     } else {
         $data["success"] = false;
         $data["msg"] = "Muitas tentativas foram feitas, tente mais tarde...";
-        echo json_encode($data);
-        exit;
     }
+    echo json_encode($data);
+    exit;
 
 }
 
