@@ -60,10 +60,6 @@ if ($_SESSION["UserAdmin"] || (isset($dados_missao) and $dados_missao["mestre"] 
 require_once "./ficha/atualizar.php";
 
 
-//Funções para fazer coisas simples.
-require_once "./ficha/functions_ficha.php";
-
-
 //Pega todos os dados da ficha: Principal
 
 if (isset($rqs)) {
@@ -307,139 +303,131 @@ if ($edit) {
 // Dados de quando atualiza a ficha ou quando altera.
     require_once "./ficha/atualizar.php";
 }
+
 ?>
 <!DOCTYPE html>
 <html lang="br">
-<head>
-    <?php
-    require_once './../../includes/head.html';
-    ?>
-    <meta charset="UTF-8">
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
-    <title><?php echo $nome?: "Desconhecido"; ?> - Ficha OP</title>
-</head>
-<body class="bg-black text-light font7">
+    <head>
+        <?php require_once './../../includes/head.html';?>
+        <meta charset="UTF-8">
+        <title><?php echo $nome?: "Desconhecido"; ?> - Ficha OP</title>
+    </head>
+    <body class="bg-black text-light font7">
+        <?php if (!isset($_GET["popout"])) {include_once "./../../includes/top.php";}?>
+        <main>
+                    <div class="my-5 container-fluid">
+                        <div class="row justify-content-center">
+                            <!-------------Detalhes Pessoais--------------->
+                            <?php
+                            if (!isset($_GET["popout"])) {
+                                include_once "./ficha/card_detalhes.php";
+                            } else {
+                                if ($_GET["popout"] == 'dados')
+                                    include_once "./ficha/card_detalhes.php";
+                            }
+                            ?>
+                            <!---------------------------Painel Principal----------------------------------->
+                            <?php
 
-<?php
-if (!isset($_GET["popout"])) {
-    include_once "./../../includes/top.php";
-}
-?>
-<!---------HTML----------------->
-<main>
-    <div class="container-fluid">
-        <div class="row justify-content-center">
-            <!-------------Detalhes Pessoais--------------->
-            <?php
-            if (!isset($_GET["popout"])) {
-                include_once "./ficha/card_detalhes.php";
-            } else {
-                if ($_GET["popout"] == 'dados')
-                    include_once "./ficha/card_detalhes.php";
-            }
-            ?>
-            <!---------------------------Painel Principal----------------------------------->
-            <?php
+                            if (!isset($_GET["popout"])) {
+                                include_once "./ficha/card_principal.php";
+                            } else {
+                                if ($_GET["popout"] == 'principal')
+                                    include_once "./ficha/card_principal.php";
+                            }
+                            ?>
+                        </div>
+                        <div class="row justify-content-center">
+                            <!---------------Atributos--------------------->
+                            <?php
+                            if (!isset($_GET["popout"])) {
+                                include_once "./ficha/card_atributos.php";
+                            } else {
+                                if ($_GET["popout"] == 'atributos')
+                                    include_once "./ficha/card_atributos.php";
+                            }
+                            ?>
+                            <!-------------------Peripeças------------------------>
+                            <?php
+                            if (!isset($_GET["popout"])) {
+                                include_once "./ficha/card_pericias.php";
+                            } else {
+                                if ($_GET["popout"] == 'pericias')
+                                    include_once "./ficha/card_pericias.php";
+                            }
+                            ?>
+                        </div
+                                <!---------------Habilidades--------------------->
+                        <div class="row justify-content-center">
+                            <?php
+                            if (!isset($_GET["popout"])) {
+                                include_once "./ficha/card_habilidades.php";
+                            } else {
+                                if ($_GET["popout"] == 'habilidades')
+                                    include_once "./ficha/card_habilidades.php";
+                            }
+                            ?>
+                            <!-------------------Proeficiencias------------------------>
+                            <?php
+                            if (!isset($_GET["popout"])) {
+                                include_once "./ficha/card_proeficiencias.php";
+                            } else {
+                                if ($_GET["popout"] == 'proeficiencias')
+                                    include_once "./ficha/card_proeficiencias.php";
+                            }
+                            ?>
+                        </div>
 
-            if (!isset($_GET["popout"])) {
-                include_once "./ficha/card_principal.php";
-            } else {
-                if ($_GET["popout"] == 'principal')
-                    include_once "./ficha/card_principal.php";
-            }
-            ?>
-        </div>
-        <div class="row justify-content-center">
-            <!---------------Atributos--------------------->
-            <?php
-            if (!isset($_GET["popout"])) {
-                include_once "./ficha/card_atributos.php";
-            } else {
-                if ($_GET["popout"] == 'atributos')
-                    include_once "./ficha/card_atributos.php";
-            }
-            ?>
-            <!-------------------Peripeças------------------------>
-            <?php
-            if (!isset($_GET["popout"])) {
-                include_once "./ficha/card_pericias.php";
-            } else {
-                if ($_GET["popout"] == 'pericias')
-                    include_once "./ficha/card_pericias.php";
-            }
-            ?>
-        </div
-                <!---------------Habilidades--------------------->
-        <div class="row justify-content-center">
-            <?php
-            if (!isset($_GET["popout"])) {
-                include_once "./ficha/card_habilidades.php";
-            } else {
-                if ($_GET["popout"] == 'habilidades')
-                    include_once "./ficha/card_habilidades.php";
-            }
-            ?>
-            <!-------------------Proeficiencias------------------------>
-            <?php
-            if (!isset($_GET["popout"])) {
-                include_once "./ficha/card_proeficiencias.php";
-            } else {
-                if ($_GET["popout"] == 'proeficiencias')
-                    include_once "./ficha/card_proeficiencias.php";
-            }
-            ?>
-        </div>
+                        <!-----------------------------------------------------------Inventario------------------------------------>
 
-        <!-----------------------------------------------------------Inventario------------------------------------>
+                        <div class="row justify-content-center">
+                        <?php
+                        if (!isset($_GET["popout"])) {
+                            include_once "./ficha/card_inventario.php";
+                        } else {
+                            if ($_GET["popout"] == 'inventario')
+                                include_once "./ficha/card_inventario.php";
+                        }
+                        ?>
+                        </div>
 
-        <div class="row justify-content-center">
-        <?php
-        if (!isset($_GET["popout"])) {
-            include_once "./ficha/card_inventario.php";
-        } else {
-            if ($_GET["popout"] == 'inventario')
-                include_once "./ficha/card_inventario.php";
-        }
-        ?>
-        </div>
-
-        <div class="row justify-content-center">
-        <?php
-        if (!isset($_GET["rituais"])) {
-            include_once "./ficha/card_rituais.php";
-        } else {
-            if ($_GET["popout"] == 'inventario')
-                include_once "./ficha/card_rituais.php";
-        }
-        ?>
-        </div>
-        <div class="row justify-content-center">
-        <?php
-        if (!isset($_GET["rolardados"])) {
-            include_once "./ficha/card_rolardados.php";
-        } else {
-            if ($_GET["popout"] == 'rolardados')
-                include_once "./ficha/card_rolardados.php";
-        }
-        ?>
-        </div>
-    </div>
-</main>
-<div id="modalsaki">
-    <!---------Modals e Toasts--------------->
-    <?php if ($edit) {
-        require_once "./ficha/modal_detalhes.php";
-        require_once "./ficha/modal_principal.php";
-        require_once "./ficha/modal_habilidades.php";
-        require_once "./ficha/modal_atributos.php";
-        require_once "./ficha/modal_pericias.php";
-        require_once "./ficha/modal_inventario.php";
-        require_once "./ficha/modal_dados.php";
-        require_once "./ficha/modal_proeficiencias.php";
-        require_once "./ficha/modal_rituais.php";
-    } ?>
-</div>
-
-<?php require_once "./ficha/scripts.php"; ?>
-</body>
+                        <div class="row justify-content-center">
+                        <?php
+                        if (!isset($_GET["rituais"])) {
+                            include_once "./ficha/card_rituais.php";
+                        } else {
+                            if ($_GET["popout"] == 'inventario')
+                                include_once "./ficha/card_rituais.php";
+                        }
+                        ?>
+                        </div>
+                        <div class="row justify-content-center">
+                        <?php
+                        if (!isset($_GET["rolardados"])) {
+                            include_once "./ficha/card_rolardados.php";
+                        } else {
+                            if ($_GET["popout"] == 'rolardados')
+                                include_once "./ficha/card_rolardados.php";
+                        }
+                        ?>
+                        </div>
+                    </div>
+                </main>
+        <div id="modalsaki">
+                    <!---------Modals e Toasts--------------->
+                    <?php if ($edit) {
+                        require_once "./ficha/modal_detalhes.php";
+                        require_once "./ficha/modal_principal.php";
+                        require_once "./ficha/modal_habilidades.php";
+                        require_once "./ficha/modal_atributos.php";
+                        require_once "./ficha/modal_pericias.php";
+                        require_once "./ficha/modal_inventario.php";
+                        require_once "./ficha/modal_dados.php";
+                        require_once "./ficha/modal_proeficiencias.php";
+                        require_once "./ficha/modal_rituais.php";
+                        require_once "./ficha/modal_rolardados.php";
+                    } ?>
+                </div>
+        <?php require_once "./ficha/scripts.php"; ?>
+    </body>
+</html>

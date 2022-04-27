@@ -2,6 +2,7 @@
 PainelAdmin/
 config/config.php
 includes/head.html
+includes/scripts.html
 robots.txt
 .htaccess
 favicon.png

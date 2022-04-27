@@ -1,63 +1,40 @@
-<header class="font5 fixed-top border-bottom border-light" id="header">
-    <div class="bg-black">
-        <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
-            <div class="nav col justify-content-start text-small ">
-                <div class="hstack">
-                    <a class="btn btn-sm fw-bolder text-light" href='/'><i class="fa-regular fa-house-blank"></i> Inicio</a>
-                    <a class="btn btn-sm fw-bolder text-light" href='https://discord.gg/QgKzg9FmUD'><i
-                                class="fa-regular fa-circle-question"></i> Suporte</a>
-                    <a class="btn btn-sm fw-bolder text-light" href='/creditos'><i class="fa-regular fa-bars"></i>
-                        Créditos</a>
-                    <button class="btn btn-sm fw-bolder text-white" data-bs-toggle="modal" data-bs-target="#doar"><i
-                                class="fa-regular fa-heart"></i> Doar
-                    </button>
-                </div>
+
+<header class="font5 fixed-top border-bottom border-light bg-black" id="header">
+    <div class="d-flex flex-wrap">
+        <div class="col">
+            <a class="btn btn-sm fw-bolder text-light" href='/'><i class="fa-regular fa-house-blank"></i> Inicio</a><!--
+            --><a class="btn btn-sm fw-bolder text-light" href='/creditos'><i class="fa-regular fa-bars"></i> Créditos</a><!--
+            --><a class="btn btn-sm fw-bolder text-white" data-bs-toggle="modal" data-bs-target="#doar"><i class="fa-regular fa-heart"></i> Doar</a>
             </div>
-            <div class="nav col-1 col-md justify-content-end text-small">
-                <div class="d-none d-md-block ">
-                    <div class="hstack">
-                        <?php if (isset($_SESSION["UserID"])) { ?>
-                            <a class="btn btn-sm fw-bolder text-warning" data-bs-toggle="modal"
-                               data-bs-target="#perfil"><i class="fa-regular fa-user"></i> Conta</a>
-                            <a class="btn btn-sm fw-bolder text-success" href='/sessao'><i
-                                        class="fa-solid fa-dice-d10"></i> Sessões de RPG</a>
-                            <a class="btn btn-sm fw-bolder text-danger" href='/encerrar'><i
-                                        class="fa-regular fa-user-xmark"></i> Encerrar Sessão</a>
-                        <?php } else { ?>
-                            <button class="btn btn-sm fw-bolder text-danger" data-bs-toggle="modal"
-                                    data-bs-target="#cadastrar"><i class="fa-regular fa-user-plus"></i> Sou novo
-                            </button>
-                            <button class="btn btn-sm fw-bolder text-success" data-bs-toggle="modal"
-                                    data-bs-target="#logar"><i class="fa-regular fa-user-check"></i> Entrar
-                            </button>
-                        <?php }; ?>
-                    </div>
-                </div>
-                <div class="dropdown d-md-none">
-                    <button title="Menu" class="btn btn-sm text-light" role="button" id="dropdownMenuLink"
-                            data-bs-toggle="dropdown" aria-expanded="false"><i class="fa-regular fa-bars"></i></button>
-                    <div class="dropdown-menu dropdown-menu-dark" title="Menu" aria-labelledby="dropdownMenuLink">
-                        <?php if (isset($_SESSION["UserID"])) { ?>
-                            <a class="dropdown-item fw-bolder text-warning" data-bs-toggle="modal"
-                               data-bs-target="#perfil"><i class="fa-regular fa-user"></i> Conta</a>
-                            <a class="dropdown-item fw-bolder text-success" href='/sessao'><i
-                                        class="fa-solid fa-dice-d10"></i> Sessões de RPG</a>
-                            <a class="dropdown-item fw-bolder text-danger" href='/encerrar'><i
-                                        class="fa-regular fa-user-xmark"></i> Encerrar Sessão</a>
-                        <?php } else { ?>
-                            <button class="dropdown-item text-danger" data-bs-toggle="modal"
-                                    data-bs-target="#cadastrar"><i class="fa-regular fa-user-plus"></i> Sou novo
-                            </button>
-                            <button class="dropdown-item text-success" data-bs-toggle="modal" data-bs-target="#logar"><i
-                                        class="fa-regular fa-user-check"></i> Entrar
-                            </button>
-                        <?php } ?>
-                    </div>
-                </div>
+        <div class="col-auto d-none d-md-block">
+            <?php if (isset($_SESSION["UserID"])) { ?>
+                <a class="btn btn-sm fw-bolder text-warning" data-bs-toggle="modal" data-bs-target="#perfil"><i class="fa-regular fa-user"></i> Conta</a>
+                <a class="btn btn-sm fw-bolder text-success" href='/sessao'><i class="fa-solid fa-dice-d10"></i> Sessões de RPG</a>
+                <a class="btn btn-sm fw-bolder text-danger" href='/encerrar'><i class="fa-regular fa-user-xmark"></i> Encerrar Sessão</a>
+            <?php } else { ?>
+                <a class="btn btn-sm fw-bolder text-danger" data-bs-toggle="modal" data-bs-target="#cadastrar"><i class="fa-regular fa-user-plus"></i> Sou novo</a>
+                <a class="btn btn-sm fw-bolder text-success" data-bs-toggle="modal" data-bs-target="#logar"><i class="fa-regular fa-user-check"></i> Entrar</a>
+            <?php } ?>
+            <a class="btn btn-sm fw-bolder text-light" href='https://discord.gg/QgKzg9FmUD'><i class="fa-regular fa-circle-question"></i> Ajuda</a>
+        </div>
+
+        <div class="col-auto dropdown d-md-none">
+            <button title="Menu" class="btn btn-sm text-light" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false"><i class="fa-regular fa-bars"></i></button>
+            <div class="dropdown-menu dropdown-menu-dark" title="Menu" aria-labelledby="dropdownMenuLink">
+                <a class="dropdown-item text-light" href='https://discord.gg/QgKzg9FmUD'><i class="fa-regular fa-circle-question"></i> Ajuda</a>
+                <?php if (isset($_SESSION["UserID"])) { ?>
+                    <a class="dropdown-item fw-bolder text-warning" data-bs-toggle="modal" data-bs-target="#perfil"><i class="fa-regular fa-user"></i> Conta</a>
+                    <a class="dropdown-item fw-bolder text-success" href='/sessao'><i class="fa-solid fa-dice-d10"></i> Sessões de RPG</a>
+                    <a class="dropdown-item fw-bolder text-danger" href='/encerrar'><i class="fa-regular fa-user-xmark"></i> Encerrar Sessão</a>
+                <?php } else { ?>
+                    <a class="dropdown-item text-danger" data-bs-toggle="modal" data-bs-target="#cadastrar"><i class="fa-regular fa-user-plus"></i> Sou novo</a>
+                    <a class="dropdown-item text-success" data-bs-toggle="modal" data-bs-target="#logar"><i class="fa-regular fa-user-check"></i> Entrar</a>
+                <?php } ?>
             </div>
         </div>
     </div>
 </header>
+
 <div class="modal fade" id="doar" tabindex="-1" aria-labelledby="titledoar" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content bg-black text-white border-success">
@@ -89,11 +66,8 @@
         </div>
     </div>
 </div>
-<?php
-if (!isset($a)) $a = true;
-if ($a) echo '<div class="my-5 w-100"></div>';
-if (!isset($_SESSION["UserID"])) {
-    ?>
+
+<?php if (!isset($_SESSION["UserID"])) {?>
     <div class="modal fade" id="logar" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content bg-black text-white border-success">
@@ -325,8 +299,6 @@ if (!isset($_SESSION["UserID"])) {
             </div>
         </div>
     </div>
-
-
     <!------------------------------------------------------------------------------------------------------------------->
     <div class="modal fade" id="configfichas" tabindex="-1" aria-label="Configurações da ficha - Modal">
         <div class="modal-dialog modal-fullscreen">
@@ -348,7 +320,6 @@ if (!isset($_SESSION["UserID"])) {
             </div>
         </div>
     </div>
-    <!------------------------------------------------------------------------------------------------------------------->
     <!------------------------------------------------------------------------------------------------------------------->
     <div id="updateforms">
         <div class="modal fade" id="trocarlogin" tabindex="-1" aria-label="Trocar login - Modal">
@@ -502,8 +473,6 @@ if (!isset($_SESSION["UserID"])) {
             </div>
         </div>
     </div>
-
-
     <!------------------------------------------------------------------------------------------------------------------->
     <script>
         const modalperfil = new bootstrap.Modal(document.getElementById('perfil'));
@@ -548,6 +517,4 @@ if (!isset($_SESSION["UserID"])) {
         })
 
     </script>
-    <?php
-}
-?>
+    <?php }?>

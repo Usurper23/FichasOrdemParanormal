@@ -175,7 +175,7 @@
             console.log("data");
             let dado = $("#rolardadosinput").val();
             $('#returncusdados').html("");
-            let pattern = /^[d0-9+-]+\S$/g;
+            let pattern = /^[d\d-+|*/AEFGINOPRTV]+\S$/g;
             let result = dado.match(pattern);
             if(result) {
                 $.post({

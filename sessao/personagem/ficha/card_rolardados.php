@@ -1,17 +1,17 @@
+<?php if ($edit) {?>
 <div class="col-md pb-2 px-1" id="card_rolar">
     <div class="card h-100 bg-black border-light">
         <div class="card-body p-0 font1">
             <div class="position-absolute end-0">
-                <?php if ($edit) {
+                <?php
                     if (!isset($_GET["popout"])) { ?>
                         <button class="btn btn-sm text-white popout" title="PopOut">
                             <i class="fa-regular fa-rectangle-vertical-history"></i>
                         </button>
                     <?php } ?>
-                    <button class="btn btn-sm text-info" title="Como rolar dados.">
+                    <button class="btn btn-sm text-info" title="Como rolar dados. "  data-bs-toggle="modal" data-bs-target="#rolardados">
                         <i class="fa-regular fa-circle-info"></i>
                     </button>
-                <?php } ?>
             </div>
             <div class="container-fluid p-2 justify-content-center text-center">
                 <label class="font6 fs-1" for="rolardadosinput">Criar Dados</label>
@@ -24,3 +24,4 @@
         </div>
     </div>
 </div>
+<?php } ?>

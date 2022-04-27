@@ -180,7 +180,7 @@
                                 </div>
                                 <label class="fs-4" for="arefe<?= $r["id"] ?>">Efeito:</label>
                                 <textarea required id="arefe<?= $r["id"] ?>" name="efeito[]"
-                                          class="form-control form-control-sm bg-black text-white"><?= $r["nome"] ?></textarea>
+                                          class="form-control form-control-sm bg-black text-white"><?= $r["efeito"] ?></textarea>
                             </div>
                         </div>
                         <input name="ritualid[]" value="<?= $r["id"] ?>" type="hidden"/>

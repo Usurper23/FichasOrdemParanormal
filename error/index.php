@@ -21,21 +21,16 @@ switch ($_GET["error"]) {
 }
 ?>
 <!doctype html>
-<html lang="pt-br">
+<html lang="br">
 <head>
-    <!-- Required meta tags -->
-    <title><?php echo $error; ?> - Fichas Ordem Paranormal</title>
-    <link rel="stylesheet" href="https://fichasop.cf/assets/css/carousel.css">
     <?php
     require_once './../includes/head.html';
     ?>
+    <title><?php echo $error; ?> - Fichas Ordem Paranormal</title>
 </head>
 <body class="bg-black text-light">
-<?php
-$a = false;
-include_once "./../includes/top.php"; ?>
-
-<div class="d-flex justify-content-center text-center">
+<?php include_once "./../includes/top.php"; ?>
+<main class="mt-5 d-flex justify-content-center text-center">
     <div class="col-lg-4">
         <div class="card bg-black text-white border-light">
             <div class="card-body text-center">
@@ -47,18 +42,6 @@ include_once "./../includes/top.php"; ?>
             </div>
         </div>
     </div>
-</div>
-
-<footer class="container-fluid fixed-bottom text-white border-light border-top">
-    <div class="clearfix">
-        <div class="float-start text-start">
-            Powered by Bootstrap
-        </div>
-        <div class="float-end text-end">
-            Criado por <a href="mailto:ludafepi123456@gmail.com">Lucas</a>. Créditos ao <a
-                    href="https://twitch.tv/cellbit/">Cellbit</a>
-        </div>
-    </div>
-</footer>
+</main>
 </body>
 </html>

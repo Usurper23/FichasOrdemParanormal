@@ -7,8 +7,10 @@ if ($edit) {
     if (isset($_POST['status'])) {
         switch ($_POST['status']) {
             case 'roll':
-                include_once "./ficha/functions_ficha.php";
+                $x = $con->query("SELECT * FROM `fichas_personagem` WHERE `id`='$id';");
+                $xq = mysqli_fetch_array($x);
                 $dado = test_input($_POST["dado"]);
+                $dado = DadoDinamico($dado,$xq["forca"],$xq["agilidade"],$xq["inteligencia"],$xq["presenca"],$xq["vigor"]);
                 if(ClearRolar($dado)) {
                     $data = Rolar($dado);
                     $data["success"] = true;

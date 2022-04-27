@@ -70,12 +70,12 @@
                                                 class="btn btn-sm fw-bolder text-danger"
                                                 title="Rolar Dano"
                                             <?php if ($edit) { ?>
-                                                onclick="rolar('<?= $row['dano']; ?>',true)"
+                                                onclick="rolar('<?=DadoDinamico($row['dano'],$forca,$agilidade,$inteligencia,$presenca,$vigor)?>',true)"
                                             <?php } else { ?>
                                                 disabled
                                             <?php } ?>>
                                             <i class="fa-regular fa-dice"></i>
-                                            <?= $row['dano']; ?>
+                                            <?=DadoDinamico($row['dano'],$forca,$agilidade,$inteligencia,$presenca,$vigor)?>
                                         </button>
                                     </td>
                                     <td class="trocavision">
@@ -83,12 +83,12 @@
                                                 class="btn btn-sm fw-bolder text-danger"
                                                 title="Rolar Dano critico"
                                             <?php if ($edit) { ?>
-                                                onclick="rolar('<?= $row['critico']; ?>',true)"
+                                                onclick="rolar('<?=DadoDinamico($row['critico'],$forca,$agilidade,$inteligencia,$presenca,$vigor)?>',true)"
                                             <?php } else { ?>
                                                 disabled
                                             <?php } ?>>
                                             <i class="fa-regular fa-dice"></i>
-                                            <?= $row['critico']; ?>
+                                            <?= DadoDinamico($row['critico'],$forca,$agilidade,$inteligencia,$presenca,$vigor)?>
                                         </button>
                                     </td>
                                     <td class="trocavision" style="display: none;"><?= $row['recarga']; ?></td>

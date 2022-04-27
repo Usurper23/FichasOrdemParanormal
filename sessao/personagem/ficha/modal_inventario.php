@@ -126,8 +126,8 @@
         <div class="modal-content bg-black border-light">
             <form class="modal-body" method="post" autocomplete="off" id="formeditarma">
                 <div class="border-0 modal-header fs-1">Editar arma</div>
-                <div class="row my-5">
-                    <div class="col">
+                <div class="row my-5 g-2">
+                    <div class="col-12">
                         <div class="input-group">
                             <label for="enome"
                                    class="p-1 input-group-text border-light bg-black text-white border-end-0">Nome:</label>
@@ -135,7 +135,7 @@
                                    class="form-control border-start-0 border-light bg-black text-white"/>
                         </div>
                     </div>
-                    <div class="col">
+                    <div class="col-12">
                         <div class="input-group">
                             <label for="etipo"
                                    class="p-1 input-group-text border-light bg-black text-white border-end-0">Tipo:</label>
@@ -143,7 +143,7 @@
                                    class="form-control border-start-0 border-light bg-black text-white"/>
                         </div>
                     </div>
-                    <div class="col">
+                    <div class="col-6">
                         <div class="input-group">
                             <label for="eataque"
                                    class="p-1 input-group-text border-light bg-black text-white border-end-0">Ataque:</label>
@@ -151,7 +151,7 @@
                                    class="form-control border-start-0 border-light bg-black text-white"/>
                         </div>
                     </div>
-                    <div class="col">
+                    <div class="col-6">
                         <div class="input-group">
                             <label for="ealcance"
                                    class="p-1 input-group-text border-light bg-black text-white border-end-0">Alcance:</label>
@@ -159,7 +159,7 @@
                                    class="form-control border-start-0 border-light bg-black text-white"/>
                         </div>
                     </div>
-                    <div class="col">
+                    <div class="col-6">
                         <div class="input-group">
                             <label for="edano"
                                    class="p-1 input-group-text border-light bg-black text-white border-end-0">Dano:</label>
@@ -167,7 +167,7 @@
                                    class="form-control border-start-0 border-light bg-black text-white"/>
                         </div>
                     </div>
-                    <div class="col">
+                    <div class="col-6">
                         <div class="input-group">
                             <label for="ecritico"
                                    class="p-1 input-group-text border-light bg-black text-white border-end-0">Critico:</label>
@@ -175,15 +175,15 @@
                                    class="form-control border-start-0 border-light bg-black text-white"/>
                         </div>
                     </div>
-                    <div class="col">
-                        <div class="col input-group">
+                    <div class="col-6">
+                        <div class="input-group">
                             <label for="erecarga"
                                    class="p-1 input-group-text border-light bg-black text-white border-end-0">Recarga:</label>
                             <input id="erecarga" name="recarga" type="text"
                                    class="form-control border-start-0 border-light bg-black text-white"/>
                         </div>
                     </div>
-                    <div class="col">
+                    <div class="col-6">
                         <div class="input-group">
                             <label for="eespecial"
                                    class="p-1 input-group-text border-light bg-black text-white border-end-0">Especial:</label>
@@ -211,8 +211,8 @@
         <div class="modal-content bg-black border-light">
             <form class="modal-body" method="post" autocomplete="off" id="formedititem">
                 <div class="border-0 modal-header fs-1">Editar Item</div>
-                <div class="row my-5 justify-content-center">
-                    <div class="col-auto">
+                <div class="row my-5 justify-content-center g2">
+                    <div class="col-12">
                         <div class="input-group">
                             <label for="enom"
                                    class="p-1 input-group-text border-light bg-black text-white border-end-0">Nome:</label>
@@ -220,7 +220,7 @@
                                    class="form-control border-start-0 border-light bg-black text-white"/>
                         </div>
                     </div>
-                    <div class="col-auto">
+                    <div class="col-12">
                         <div class="input-group">
                             <label for="edes"
                                    class="p-1 input-group-text border-light bg-black text-white border-end-0">Descrição:</label>
@@ -228,7 +228,7 @@
                                    class="form-control border-start-0 border-light bg-black text-white"/>
                         </div>
                     </div>
-                    <div class="col-auto">
+                    <div class="col-6">
                         <div class="input-group">
                             <label for="epes"
                                    class="p-1 input-group-text border-light bg-black text-white border-end-0">Peso/Espaço:</label>
@@ -236,7 +236,7 @@
                                    class="form-control border-start-0 border-light bg-black text-white"/>
                         </div>
                     </div>
-                    <div class="col-auto">
+                    <div class="col-6">
                         <div class="input-group">
                             <label for="epre"
                                    class="p-1 input-group-text border-light bg-black text-white border-end-0">Prestigio:</label>
@@ -264,8 +264,8 @@
         <div class="modal-content bg-black border-light">
             <form class="modal-body" method="post" autocomplete="off" id="formadditem">
                 <div class="border-0 modal-header fs-1">Adicionar Item</div>
-                <div class="row my-5">
-                    <div class="col">
+                <div class="row my-5 g-2">
+                    <div class="col-12">
                         <div class="input-group">
                             <label for="anom"
                                    class="p-1 input-group-text border-light bg-black text-white border-end-0">Nome:</label>
@@ -273,7 +273,7 @@
                                    class="form-control border-start-0 border-light bg-black text-white"/>
                         </div>
                     </div>
-                    <div class="col">
+                    <div class="col-12">
                         <div class="input-group">
                             <label for="ades"
                                    class="p-1 input-group-text border-light bg-black text-white border-end-0">Descrição:</label>
@@ -281,7 +281,7 @@
                                    class="form-control border-start-0 border-light bg-black text-white"/>
                         </div>
                     </div>
-                    <div class="col">
+                    <div class="col-6">
                         <div class="input-group">
                             <label for="apes"
                                    class="p-1 input-group-text border-light bg-black text-white border-end-0">Peso:</label>
@@ -289,7 +289,7 @@
                                    class="form-control border-start-0 border-light bg-black text-white"/>
                         </div>
                     </div>
-                    <div class="col">
+                    <div class="col-6">
                         <div class="input-group">
                             <label for="apre"
                                    class="p-1 input-group-text border-light bg-black text-white border-end-0">Prestigio:</label>
