@@ -245,7 +245,6 @@ if (isset($_POST["status"])) {
         <title>Mestre - FichasOP</title>
     </head>
     <body class="bg-black text-white">
-    <?php include_once "./../../includes/top.php"; ?>
     <main class="container-fluid mt-5">
         <div class="row g-2">
             <div class="col-md">
@@ -422,7 +421,7 @@ if (isset($_POST["status"])) {
                             <div class="card-title fs-2 text-center">Fichas NPCs</div>
                         </div>
                         <div class="container-fluid p-0">
-                            <div class="row m-2" id="fichasperson">
+                            <div class="row m-2" id="fichasnpc">
                                 <?php
                                 $fichanpcs = $con->query("SELECT * FROM `fichas_npc` WHERE `missao` = '$id';");
                                 while ($r = mysqli_fetch_array($fichanpcs)) {
@@ -1083,6 +1082,8 @@ if (isset($_POST["status"])) {
         </div>
     </div>
 
+    <?php require_once "./../../includes/scripts.html"; ?>
     <?php require_once "./includes/scripts.php"; ?>
+    <?php require_once "./../../includes/top.php";?>
     </body>
 </html>

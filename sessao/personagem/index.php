@@ -428,6 +428,10 @@ if ($edit) {
                         require_once "./ficha/modal_rolardados.php";
                     } ?>
                 </div>
+        <?php require_once "./../../includes/scripts.html";?>
+        <?php if (!isset($_GET["popout"])) {
+            require_once "./../../includes/top.php";
+        }?>
         <?php require_once "./ficha/scripts.php"; ?>
     </body>
 </html>

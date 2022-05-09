@@ -29,7 +29,6 @@ switch ($_GET["error"]) {
     <title><?php echo $error; ?> - Fichas Ordem Paranormal</title>
 </head>
 <body class="bg-black text-light">
-<?php include_once "./../includes/top.php"; ?>
 <main class="mt-5 d-flex justify-content-center text-center">
     <div class="col-lg-4">
         <div class="card bg-black text-white border-light">
@@ -42,6 +41,8 @@ switch ($_GET["error"]) {
             </div>
         </div>
     </div>
+    <?php require_once __DIR__ . "../includes/scripts.html";?>
+    <?php require_once __DIR__ . "../includes/top.php";?>
 </main>
 </body>
 </html>

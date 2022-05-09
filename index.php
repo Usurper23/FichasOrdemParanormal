@@ -13,7 +13,6 @@ header("X-Robots-Tag: all");
         ?>
     </head>
     <body class="bg-black text-light">
-        <?php require_once __DIR__ . "/includes/top.php";?>
         <main>
 
             <!-- Marketing messaging and featurettes
@@ -29,7 +28,7 @@ header("X-Robots-Tag: all");
                              class="rounded-circle mx-3 border border-1 border-white">
 
                         <h2>Fichas Pré-Prontas.</h2>
-                        <p>Para ja começar de jeito, disponibilizamos fichas de exeplo, onde poderá editar tudo ao seu
+                        <p>Para ja começar de jeito, disponibilizamos fichas de exemplo, onde poderá editar tudo ao seu
                             gosto!</p>
                     </div><!-- /.col-lg-4 -->
                     <div class="col-lg-4">
@@ -105,5 +104,7 @@ header("X-Robots-Tag: all");
                 </div>
             </div>
         </footer>
+        <?php require_once "./includes/scripts.html";?>
+        <?php require_once __DIR__ . "/includes/top.php";?>
     </body>
 </html>

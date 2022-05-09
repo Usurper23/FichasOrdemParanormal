@@ -105,7 +105,6 @@ if (isset($_POST["status"])) {
         <title>Sessões - FichasOP</title>
     </head>
     <body class="bg-black text-light font7">
-        <?php require_once "./../includes/top.php"; ?>
         <main class="container-flex mx-0 py-5 justify-content-center">
             <div class="row m-3">
                 <div class="col-md my-2 justify-content-center">
@@ -410,6 +409,8 @@ if (isset($_POST["status"])) {
                 </div>
             </div>
         </div>
+        <?php require_once "./../includes/scripts.html";?>
+        <?php require_once "./../includes/top.php";?>
         <script>
             function deleteficha(id) {
                 let text = "DESEJA DELETAR A FICHA?\nNÃO SERÁ POSSIVEL REVERTER";

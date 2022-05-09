@@ -14,7 +14,6 @@ $id = intval($_GET["missao"]);
         <title>Criar Personagem - Fichas OP</title>
     </head>
     <body class="bg-black text-white">
-        <?php require_once "./../../../includes/top.php";?>
         <main class="container-fluid my-5" id="tudo">
             <div class="card bg-black border-light">
                 <div class="card-body">
@@ -224,6 +223,8 @@ $id = intval($_GET["missao"]);
                 </div>
             </div>
         </div>
+        <?php require_once "./../../../includes/scripts.html";?>
+        <?php require_once "./../../../includes/top.php";?>
         <script>
             $('#fotourl').on('input', function () {
                 var src = jQuery(this).val();

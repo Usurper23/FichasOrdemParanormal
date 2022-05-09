@@ -16,3 +16,5 @@ function cryptthis($string): string
 {
     return md5($string); // create your scheme..
 }
+
+const RootDir = "/";
